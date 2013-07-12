@@ -1,0 +1,36 @@
+<br/>
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= link_to '大分类一览', :controller => 'admin/big_categories', :action => :list %>&nbsp;&gt;&nbsp;<%= '添加小分类' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+<div>
+  <div id="model_errors">
+    <%= render :partial => "/common/error_message", :locals => {:obj => @small_category} %>
+  </div>
+  <%= form_tag(:action => :create, :method => :post, :align => :center) do -%>
+    <%= select("big","big_category_id", BigCategory.all.collect {|bs| [bs.name, bs.id]}, {:selected => @middle_category.big_category_id.to_i},:onchange => "change_cate(this)")%>
+    <%= select_tag  'middle_category_id', options_for_select([] + @middle_categorys,@middle_category.id),  :id => "mid_cate" %>
+
+    <br/>
+    小分类：<%= text_field_tag 'small_category' %><%#= link_to "继续增加小分类","#",:onclick => "addtext(this)"%>
+    <%= submit_tag '添加' %>
+  <% end %>
+</div>
+
+<%#联动用到的%>
+<script>
+  function change_cate(obj)
+  {
+    jQuery.ajax('/admin/middle_categories/get_mid_cate_test?id=' + obj.value,{
+      method: "get",
+      dataType: "html",
+      success: function(data){
+        
+        $('#mid_cate').html(data);
+
+      }
+    })
+  }
+</script>

@@ -1,0 +1,24 @@
+<h2><%= flash[:message] %>&nbsp;&gt;&nbsp;<%= link_to "继续购物",:controller => :products, :action => :show, :id => @product.id %></h2>
+<div>
+  <table width="65%" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center">商品编号</td>
+      <td align="center">商品名称</td>
+      <td align="center">价格</td>
+      <td align="center">商品数量</td>
+      <td align="center">删除商品</td>
+    </tr>
+    <% if @shopping_carts.present? %>
+      <% @shopping_carts.each do |cart| %>
+        <tr>
+          <td><%= cart.product.num %></td>
+          <td><%= cart.product.name %></td>
+          <td>¥<%= cart.purchase_price %></td>
+          <td><%= cart.quantity %></td>
+          <td><%#= link_to '删除', shopping_cart_delete(cart), method: :delete, data: { confirm: '确定删除?' },:title => "删除" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+

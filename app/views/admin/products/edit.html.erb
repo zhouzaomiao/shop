@@ -1,0 +1,23 @@
+<div>
+  <h2><%= '首页' %>&nbsp;&gt;&nbsp;<%= link_to '商品一览', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '商品编辑' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+
+<div>
+  <iframe name ="iframe" style ="display:none;"></iframe>
+  <%= form_for @product, :url => {} do |f|%>
+    <td><%= render :partial => "/common/error_message", :locals => {:obj => @product} %><br /><%= flash[:message] %></td>
+    <table width="60%" border="1">
+      
+      <td><%= render :partial => 'form', :locals => { :f => f } %></td>
+      
+      <tr colspan="2">
+        <td><%= button_to_function "更新", "this.form.action='#{url_for :controller => 'admin/products', :action => 'update', :id => @product.id, :method => 'post'}';this.form.target = '_self';this.form.submit();" %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+

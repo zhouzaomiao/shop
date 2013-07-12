@@ -1,0 +1,66 @@
+<%#= render 'form' -%>
+<%#= link_to 'Back', products_path %>
+
+<div id="shortcut">
+  <div class="w">
+    <ul>
+      <li class="fore">
+                           	您好，欢迎来到商城！<span><%=link_to  "[请登录]", new_user_session_path %>新用户？</span>
+        <%= link_to "[免费注册]", signup_users_path %>
+      </li>
+    </ul>
+    <span class="clr"></span>
+  </div>
+</div>
+
+<div class="w" id="logo">
+
+</div>
+<div class="w" id="entry">
+  <div class="mt">
+  </div>
+  <div class="mc" style="padding-top:20px;">
+    <div class="form">
+      <span><h2>用户登录:</h2></span>
+      <%= flash[:message] %>
+      <%= form_for @user_session, :action => :create, :html => {:method => :post} do |f| %>
+        <div class="item">
+          <span class="label">用户名：</span>
+          <div class="fl">
+            <td><%= f.text_field :login %><br/></td>
+          </div>
+        </div>
+        <div class="item">
+          <span class="label">密码：</span>
+          <div class="fl">
+            <td><%= f.password_field :password %></td>
+            <label></label>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="label">&nbsp;</span>
+          <%= f.submit "登入", :class => "btn-img btn-entry", :id => "loginsubmit" %>
+        </div>
+      <% end %>
+    </div><!--[if !ie]>form end<![endif]-->
+    <div id="guide">
+      <h5>还不是商城用户？</h5>
+      <div class="content">
+        现在免费注册成为商城用户，便能立刻享受便宜又放心的购物乐趣。
+      </div>
+
+      <%= link_to '注册新用户', signup_users_path, :class => "btn-link btn-personal" %>
+    </div>
+    <span class="clr"></span>
+  </div>
+
+</div>
+
+<div class="w" id="copyright">
+  <br/>
+  智科&copy;2012-2013&nbsp;&nbsp;zzm&nbsp;版权所有
+  <br/>
+</div>
+
+

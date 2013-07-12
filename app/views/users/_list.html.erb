@@ -1,0 +1,34 @@
+
+<%#= flash[:message] %>
+<table width="65%" border="1" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center">账单号</td>
+    <td align="center">购买时间</td>
+    <td align="center">商品数量</td>
+    <th align="center">总价</th>
+    <td align="center">操作</td>
+  </tr>
+  <% if  @purchases_succeed.present? %>
+    <% @purchases_succeed.each do |f| %>
+      <% a = 0  %>
+      <% f.shopping_carts.each do |s| %>
+        <% a += s.quantity %>
+      <% end %>
+      <tr>
+        <td> <%= f.id %></td>
+        <td><%= f.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+        <td><%= a %></td>
+        <td><%= f.total_price %></td>
+        <td><%= link_to "查看", show_products_users_path(:id => f.id) %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<td><%#= will_paginate @purchases_succeed, :params => params, :remote => true %></td>
+<%= will_paginate_remote(@purchases_succeed, :update=>'purchases_parge', :params => params)%>
+
+
+
+
+

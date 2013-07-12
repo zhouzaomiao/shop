@@ -1,0 +1,6 @@
+<% if params[:page].present? %>
+  <%= render "list" %>
+<% else %>
+  $("#purchease_index").html("<%= j render 'index' %>");
+<% end %>
+

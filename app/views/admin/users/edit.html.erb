@@ -1,0 +1,44 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= link_to '用户一览', :controller => 'admin/users', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '用户编辑' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+
+<table cellspacing="0" cellpadding="0" bordercolor="#778899" border="1" align="center">
+  <%= form_for @user, :url => admin_user_path do |f| %>
+    <%= render :partial => "/common/error_message", :locals => {:obj => @user} %>
+    <tr>
+    <div class="field">
+      <td align="center"><%= f.label :用户名 %></td>
+      <td><%= f.text_field :login %></td>
+    </div>
+  </tr>
+  <tr>
+  <div class="field">
+    <td align="center"><%= f.label :邮箱 %></td>
+    <td><%= f.text_field :email %></td>
+  </div>
+  </tr>
+  <tr>
+  <div class="field">
+    <td align="center"><%= f.label :密码 %></td>
+    <td><%= f.password_field :password %></td>
+  </div>
+  </tr>
+  <tr>
+  <div class="field">
+    <td align="center"><%= f.label :确认密码 %></td>
+    <td><%= f.password_field :password_confirmation %></td>
+  </div>
+  </tr>
+  <tr>
+  <div class="actions">
+    <td><%= f.submit %></td>
+
+    <td><%= link_to '返回', list_admin_users_url %></td>
+  </div>
+  </tr>
+<% end %>
+</table>

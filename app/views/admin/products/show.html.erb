@@ -1,0 +1,52 @@
+<div>
+  <div>
+    <h2><%= '首页' %>&nbsp;&gt;&nbsp;<%= link_to '商品一览', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '商品详细' %>
+    </h2>
+  </div>
+  <br/>
+  <hr></hr>
+
+  <div>
+    <table align="center">
+      <tr>
+        <td>操作：<%= link_to "修改", edit_admin_product_path(@product.id, small_category_id: @product.small_category_id) %></td>
+      </tr>
+      <tr>
+        <td>编号：<%= @product.num %></td>
+      </tr>
+      <tr>
+        <td>名字：<%= @product.name%></td>
+      </tr>
+      <tr>
+        <td>剩余数量：<%= @product.count%></td>
+      </tr>
+      <% if @product.enabel%>
+        <tr>
+          <td>状态属于：上架</td>
+        </tr>
+        <tr>
+          <td>上架时间：<%= @product.up_time.strftime("%Y-%m-d %H:%m:%S")%></td>
+        </tr>
+      <% else %>
+        <tr>
+          <td>状态：下架</td>
+        </tr>
+      <% end %>
+      <tr>
+        <td>进价：<%= @product.cost%></td>
+      </tr>
+      <tr>
+        <td>出售价格：<%= @product.price%></td>
+      </tr>
+      <tr>
+        <td>分类情况：属于<%= @product.small_category.middle_category.big_category.name%>/<%= @product.small_category.middle_category.middle_category_name%>/<%= @product.small_category.small_category_name%> 系列</td>
+      </tr>
+      
+      <tr>
+        <td><%= @product.describe.html_safe %></td>
+      </tr>
+
+    </table>
+  </div>
+</div>
+

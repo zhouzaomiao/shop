@@ -1,0 +1,45 @@
+<div class="form">
+  <div class="item">
+    <span class="label">用户名：</span>
+    <div class="fl">
+      <td><%= f.text_field :login, :class => "text" %></td>
+      <label id="username_succeed" class="blank"></label>
+      <span class="clr"></span>
+      <div id="username_error"></div>
+    </div>
+  </div>
+  <div id="o-password">
+    <div class="item">
+      <span class="label">设置密码：</span>
+      <div class="fl">
+
+        <td><%= f.password_field :password , :class => "text"%></td>
+        <label id="pwd_succeed" class="blank"></label>
+        <span class="clr"></span>
+        <label class="hide" id="pwdstrength"><span class="fl">安全程度：</span><b></b></label>
+        <label id="pwd_error"></label>
+
+      </div>
+    </div>
+    <div class="item">
+      <span class="label">确认密码：</span>
+      <div class="fl">
+        <%= f.password_field :password_confirmation ,:class => "text"%>
+        <label id="pwd2_succeed" class="blank"></label>
+        <span class="clr"></span>
+        <label id="pwd2_error"></label>
+
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="label">邮箱：</span>
+    <div class="fl">
+      <td><%= f.text_field :email, :class => "text"%></td>
+      <label id="mail_succeed" class="blank"></label>
+      <span class="clr"></span>
+      <div id="mail_error"></div>
+
+    </div>
+  </div>
+</div>

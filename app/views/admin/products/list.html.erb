@@ -1,0 +1,67 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '商品一览' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+<div id="huan">
+  <div id="model_errors" align="center">
+    <h4><%= flash[:message] %></h4>
+  </div>
+  <div>
+    <h3><td>商品一览：</td></h3>
+  </div>
+
+  <table width="80%" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center">编号</td>
+      <td align="center">商品名</td>
+      <td align="center">剩余数量</td>
+      <td align="center">进价</td>
+      <td align="center">出售价格</td>
+      <td align="center">小分类</td>
+      <td align="center">上架时间</td>
+      <td align="center">状态</td>
+      <td align="center">操作</td>
+    </tr>
+    <% if @products.present? %>
+      <% @products.each do |f| %>
+        <tr id=tr1>
+          <td><%= f.num %></td>
+          <td><%= f.name %></td>
+          <td><%= f.count %></td>
+          <td><%= f.cost %></td>
+          <td><%= f.price %></td>
+          <td><%= f.small_category.small_category_name %></td>
+          <% if f.enabel %>
+            <td><%=h f.up_time.strftime("%Y-%m-%d %H:%M:%S")%></td>
+          <% else %>
+            <td>还没有上架</td>
+          <% end %>
+          <td>
+            <% if f.enabel %>
+              <%= link_to "下架", up_frame_admin_products_path(:id => f.id), :params => params  %>
+            <% else %>
+              <%= link_to "上架", up_frame_admin_products_path(:id => f.id), :params => params %>
+            <% end %>
+          </td>
+          <td><%= link_to "编辑", edit_admin_product_path(f.id, small_category_id: f.small_category_id) %>&nbsp;&nbsp;<%= link_to '删除', admin_product_path(f), method: :delete, data: { confirm: '确定删除?' },:title => "删除", :params => params %>&nbsp;&nbsp;<%= link_to "商品详细", :controller => :products, :action => :show, :id => f.id %>&nbsp;&nbsp;<%= link_to "评论管理",admin_comment_path(:id => f.id) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    <td><%= link_to "添加商品", :controller => :products, :action => :new, :big_category => params[:id]%></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td align="center"><%= will_paginate @products, :params => params %></td>
+
+    <td></td>
+  </table>
+  
+</div>
+

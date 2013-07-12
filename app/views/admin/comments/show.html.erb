@@ -1,0 +1,35 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '商品评论一览' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+<div>
+  <div id="model_errors" >
+    <h3>第<%= @product.num %>号商品所有评论一览：</h3>
+    <h4><%= flash[:message] %></h4>
+  </div>
+  <table width="80%" border="1" cellpadding="0" cellspacing="0"><div>
+      <tr>
+        <td>用户名</td>
+        <td>内容</td>
+        <td>评论时间</td>
+        <td>操作</td>
+      </tr>
+    </div>
+    <% if @comments.present? %>
+      <% @comments.each do |comment| %>
+        <div>
+          <tr>
+            <td><%= User.find_by_id(comment.user_id).try(:login) %><br/></td>
+            <td><%= comment.comment %><br/></td>
+            <td><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+            <td><%= link_to '删除评论', "", method: :delete, data: { confirm: '确定删除改评论?' } %><br/></td>
+          </tr>
+        </div>
+      <% end %>
+    <% end %>
+  </table>
+  <td><%= will_paginate @comments %></td>
+</div>

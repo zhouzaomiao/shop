@@ -1,0 +1,34 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'index' %>&nbsp;&gt;&nbsp;<%= link_to '大分类', :controller => 'admin/big_categories', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '中分类' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+<div>
+  <div>
+    <div id="model_errors">
+    </div>
+    <div>
+      <h3><td>所有中分类：</td><td><%= flash[:message] %></td></h3>
+    </div>
+    <table width="80%" border="1" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>中分类名</td>
+        <td>创建时间</td>
+        <td>操作</td>
+      </tr>
+      <% if @all_middle_category.present? %>
+        <% @all_middle_category.each do |middle_category| %>
+          <tr id=tr1>
+            <td><%=  middle_category.big_category.name %>/<%= middle_category.middle_category_name %></td>
+            <td><%= middle_category.created_at.strftime("%m/%d/%Y") %></td>
+            <td><%= link_to "编辑", edit_admin_title_middle_category_path(middle_category.id) %>&nbsp;&nbsp;<%= link_to "删除",  admin_title_middle_category_path(middle_category.id),method: :delete, data: { confirm: '确定要删除该分类吗?'}%>&nbsp;&nbsp;<%= link_to "显示小分类", :controller => :small_categories, :action => :list, :id => middle_category.id %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      <td><%= link_to "添加中分类",  :controller => :title_middle_categories, :action => :new%></td>
+    </table>
+    <td align="center"><%= will_paginate @all_middle_category, :params => params %></td>
+  </div>
+</div>

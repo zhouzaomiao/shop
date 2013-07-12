@@ -1,0 +1,24 @@
+<div>
+  <h2><%= '首页' %>&nbsp;&gt;&nbsp;<%= link_to '商品一览', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '商品添加' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+<div>
+  <div>
+    <h3><td>商品添加：</td>
+      <%= flash[:message] %></h3>
+  </div>
+  <%= form_for @product, :html => {:multipart  => true, :target => 'iframe'} do |f| %>
+    <td><%= render :partial => "/common/error_message", :locals => {:obj => @product} %></td>
+
+    <table width="60%" border="1">
+      <tr><td><%= render :partial => 'form', :locals => { :f => f } %></td></tr>
+      <tr colspan="2">
+        <td><%= button_to_function "确定", "this.form.action='#{admin_products_path(@product)}';this.form.target = '_self';this.form.submit();" %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+

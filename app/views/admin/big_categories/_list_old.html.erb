@@ -1,0 +1,35 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '大分类' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+<div>
+  <div>
+    <div>
+      <h3><td>所有大分类：</td><td><%= flash[:message] %></td></h3>
+    </div>
+    <table width="80%" border="1" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>大分类名</td>
+        <td>创建时间</td>
+        <td>操作</td>
+      </tr>
+      <% if @all_big_category.present? %>
+        <% @all_big_category.each do |big_category| %>
+          <tr id=tr1>
+            <td><%= big_category.name %></td>
+            <td><%= big_category.created_at.strftime("%m/%d/%Y") %></td>
+            <td><%= link_to "编辑", edit_admin_big_category_path(big_category.id), :remote => true  %>&nbsp;&nbsp;<%= link_to "删除",  admin_big_category_path(big_category.id),method: :delete, data: { confirm: '确定要删除该分类吗?'}%>&nbsp;&nbsp;<%= link_to "显示中分类", :controller => :middle_category, :action => :list, :id => big_category.id %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      <td><%= link_to "添加大分类",  :controller => :big_category, :action => :new %></td>
+    </table>
+      <%= will_paginate @all_big_category %>
+  </div>
+</div>
+
+
+

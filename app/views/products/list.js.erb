@@ -1,0 +1,26 @@
+<table id="list" >
+  <% if @products.present? %>
+    <% @products.each_with_index do |product,index| %>
+      <tr>
+        <td><%=link_to (image_tag product.product_pictrue.try(:avatar).try(:url,:thumb),:onerror => "this.src='/images/pictrues/12.jpg'" ) ,product_path(product.id) %></td>
+      </tr>
+      <tr>
+        <td><%=h link_to  "#{product.name}",product_path(product.id) %></td>
+      </tr>
+      <tr>
+        <td> <%= "¥#{product.price}" %></td>
+      </tr>
+      <tr>
+        <td><%=link_to  "已有#{product.price}人评价",product_path(product.id) %></td>
+      </tr>
+      <tr>
+        <td><%=link_to  "加入购物车",add_cart_success_shopping_carts_path(:id => product.id) %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  <tr>
+    <% if @products.present? %>
+      <td><h3><%= will_paginate @products %></h3></td>
+    <% end %>
+  </tr>
+</table>

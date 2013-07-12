@@ -1,0 +1,19 @@
+<table cellspacing="0" cellpadding="0" bordercolor="#778899" border="1" align="center">
+  <tr><td></td><td>后台登录</td></tr>
+  <%= form_for @admin_session, :url => admin_admin_sessions_path do |f| %>
+
+
+    <tr>
+      <td><%= f.label :用户名 %></td>
+      <td><%= f.text_field :login %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :密码 %></td>
+      <td><%= f.password_field :password %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit "登录" %></td>
+    </tr>
+  <% end %>
+</table>

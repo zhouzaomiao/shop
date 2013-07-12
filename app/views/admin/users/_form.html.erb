@@ -1,0 +1,35 @@
+<table cellspacing="0" cellpadding="0" bordercolor="#778899" border="1" align="center">
+  <%= form_for @user,:url => admin_admins_path do |f| %>
+    <tr>
+    <div class="field">
+      <td align="center"><%= f.label :用户名 %></td>
+      <td><%= f.text_field :login %></td>
+    </div>
+  </tr>
+  <tr>
+  <div class="field">
+    <td align="center"><%= f.label :邮箱 %></td>
+    <td><%= f.text_field :email %></td>
+  </div>
+  </tr>
+  <tr>
+  <div class="field">
+    <td align="center"><%= f.label :密码 %></td>
+    <td><%= f.password_field :password %></td>
+  </div>
+  </tr>
+  <tr>
+  <div class="field">
+    <td align="center"><%= f.label :确认密码 %></td>
+    <td><%= f.password_field :password_confirmation %></td>
+  </div>
+  </tr>
+  <tr>
+  <div class="actions">
+    <td><%= f.submit %></td>
+
+    <td><%= link_to '返回', admin_admins_path %></td>
+  </div>
+  </tr>
+<% end %>
+</table>

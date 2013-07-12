@@ -1,0 +1,28 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= link_to '大分类', :controller => 'admin/big_categories', :action => 'list' %>&nbsp;&gt;&nbsp;<%= link_to '中分类', :controller => 'admin/middle_categories', :action => 'index' %>&nbsp;&gt;&nbsp;<%= link_to '小分类', :controller => 'admin/small_categories', :action => 'index' %>&nbsp;&gt;&nbsp;<%= '小分类编辑' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+<div>
+  <h4><td><td><%= render :partial => "/common/error_message", :locals => {:obj => @small_category} %></td></td></h4>
+</div>
+<%=  form_tag( admin_small_category_path(@small_category.id)  , :method => :put ,:align => :center) do -%>
+  <table>
+    <tr>
+      <td align="right"><%= label_tag '小类别名：' %></td>
+      <td><%= text_field_tag 'small_category_name[name]',@small_category.small_category_name%> </td>
+    </tr>
+    <tr>
+      <td align="right">
+        <span class="STYLE2">
+          <%= link_to '取消', :controller => 'admin/small_categories', :action => :list, :id => @middle_category.id  %>
+        </span>
+      </td>
+      <td align="right">
+        <%= submit_tag '更新' %>
+      </td>
+    </tr>
+  </table>
+<% end -%>

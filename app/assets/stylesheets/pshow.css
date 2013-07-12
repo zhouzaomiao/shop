@@ -1,0 +1,271 @@
+/*sortlist*/
+#sortlist .mt{height:24px;padding:3px 8px;background:url(/images/i/bg_tit_home.gif) #E6E6E6 no-repeat 0 -520px;line-height:24px;}
+#sortlist h2{color:#fff;}
+#sortlist .mc{border:solid #E6E6E6;border-width:0 1px 1px;}
+#sortlist ul{padding:6px 0 6px 6px;overflow:hidden;zoom:1;}
+#sortlist li{float:left;width:95px;height:18px;padding:3px 6px 3px 0;overflow:hidden;}
+
+/*samekind*/
+#samekind .mt{height:24px;padding:3px 8px;background:url(/images/i/bg_tit_home.gif) #E6E6E6 repeat-x 0 -30px;line-height:24px;}
+#samekind .mc{border:solid #E6E6E6;border-width:0 1px 1px;}
+#samekind ul{padding:6px 0 6px 6px;overflow:hidden;zoom:1;}
+#samekind li{float:left;width:61px;height:18px;padding:3px 6px 3px 0;overflow:hidden;}
+
+/*rank*/
+.rank .mt{height:24px;padding:3px 8px;background:url(/images/i/bg_tit_home.gif) #E6E6E6 repeat-x 0 -30px;line-height:24px;}
+.rank .mc{padding:0 1px;border:solid #E6E6E6;border-width:0 1px 1px;}
+.rank .tab{padding:6px 2px 0;height:19px;border-bottom:1px solid #c00;overflow:hidden;zoom:1;}
+.rank .tab li{width:62px;height:17px;padding-top:2px;margin:0 2px;background:url(/images/i/bg_tit_home.gif) no-repeat 0 -274px;text-align:center;line-height:17px;color:#999;}
+.rank .tab .curr{background:url(/images/i/bg_tit_home.gif) no-repeat -62px -274px;color:#c00;}
+.rank .tab .curr a:link,.rank .tab .curr a:visited{color:#c00;}
+.rank .tabcon li{float:left;width:197px;padding:6px 5px;border-top:1px solid #efefef;overflow:hidden;height:22px;line-height:22px;}
+.rank .tabcon span{float:left;padding:0 8px 0 4px;font-size:14px;font-weight:bold;color:#C00;font-family:arial;}
+.rank .tabcon .p-img{float:left;margin-right:5px;display:none;}
+.rank .tabcon .p-name{float:left;width:176px;height:22px;overflow:hidden;}
+.rank .tabcon .p-price{float:left;height:18px;margin-top:2px;line-height:18px;display:none;}
+.rank .tabcon .fore{padding:10px 5px 10px;height:56px;}
+.rank .tabcon .fore .p-img{display:block;}
+.rank .tabcon .fore .p-name{width:120px;height:3em;line-height:1.5em;}
+.rank .tabcon .fore .p-price{display:block;}
+
+/*recent*/
+#recent .mt{height:24px;padding:3px 8px;background:url(/images/i/bg_tit_home.gif) #E6E6E6 repeat-x 0 -60px;line-height:24px;}
+#recent h2{float:left;}
+#recent .mc{padding:0 1px;border:solid #E6E6E6;border-width:0 1px 1px;}
+#recent li{padding:5px 0;overflow:hidden;background:url(/images/i/bg_tit_home.gif) repeat-x 0 -597px;zoom:1;}
+#recent .p-img{float:left;padding-left:8px;margin-right:5px;}
+#recent .p-name{float:left;width:140px;margin-top:10px;}
+#recent .norecode{padding:5px 7px;}
+#recent .iloading{margin-top:5px;margin-bottom:5px;}
+
+/*name*/
+#name{padding:10px;text-align:center;}
+#name h1{display:inline;font-size:16px;font-family:arial;}
+
+/*preview*/
+#preview{float:left;width:352px;margin-bottom:20px;}
+#preview .links{padding:20px 0 0 20px;}
+#preview .links li{position:relative;height:20px;padding:0 20px;line-height:20px;}
+#preview .links a{color:#005aa0;}
+#preview .links b{position:absolute;left:0;top:0;width:18px;height:18px;background-image:url(/images/i/icon_clubs.gif);background-repeat:no-repeat;}
+#preview .fore1 b{background-position:0 -14px;}
+#preview .fore2 b{background-position:-18px -14px;}
+#preview .fore3 b{background-position:-38px -14px;}
+#preview s{position:absolute;display:block;right:-10px;top:-9px;width:33px;height:11px;background:url(/images/i/icon_clubs.gif) no-repeat -40px -49px;}
+#spec-n1{width:350px;height:350px;border:1px solid #e4e4e4;}
+#spec-n5{position:relative;width:300px;height:56px;padding:5px 26px;}
+#spec-list{width:300px;height:56px;overflow:hidden;}
+#spec-list ul{height:56px;overflow:hidden;}
+#spec-list li{width:60px;text-align:center;}
+#spec-list img{padding:2px;border:1px solid #E8E8E8;}
+#spec-n5 .control{position:absolute;top:10px;width:10px;height:45px;background-image:url(/images/i/icon_clubs.gif);background-repeat:no-repeat;cursor:pointer;}
+#spec-left{left:8px;background-position:-68px -380px;}
+#spec-right{right:8px;background-position:-79px -380px;}
+#spec-left.disabled{background-position:-90px -380px;}
+#spec-right.disabled{background-position:-101px -380px;}
+
+/*jqzoom*/
+.jqzoom{position:relative;padding:0;}
+.zoomdiv{z-index:100;position:absolute;top:1px;left:0px;width:400px;height:400px;background:url(/images/i/loading.gif) #fff no-repeat center center;border:1px solid #e4e4e4;display:none;text-align:center;overflow: hidden;}
+.bigimg{width:800px;height:800px;}
+.jqZoomPup{z-index:10;visibility:hidden;position:absolute;top:0px;left:0px;width:50px;height:50px;border:1px solid #aaa;background:#FEDE4F 50% top no-repeat;opacity:0.5;-moz-opacity:0.5;-khtml-opacity:0.5;filter:alpha(Opacity=50);cursor:move;}
+
+/*summary*/
+#summary{float:right;width:350px;padding:10px;background:url(i/bg_tit_home.gif) repeat-x 0 -597px;margin-bottom:20px;}
+#summary a:link,#summary a:visited{color:#005aa0;}
+#summary li{padding-top:10px;padding-bottom:10px;}
+#summary .pid{padding-left:30px;color:#999;}
+#summary .price{font-size:18px;color:#f00;margin-right:30px;}
+#summary .item{position:relative;}
+#summary .star{float:left;margin-top:2px;}
+#summary .num-comment{float:left;}
+#service-trade{padding-left:22px;zoom:1;}
+#service-trade b{position:absolute;top:8px;left:0;width:20px;height:18px;background:url(/images/i/icon_clubs.gif) no-repeat 0 -49px;}
+
+/*i-largess*/
+#i-largess{width:540px;}
+#i-largess div{margin-bottom:2px;}
+#i-largess img{width:26px;height:26px;border:1px solid #E4E4E4;margin-right:5px;}
+
+/*choose*/
+#choose{float:left;padding-left:3px;width:300px;border:1px solid #EED97C;background:#FFFCEB;color:#B94708;}
+#choose dl{padding:10px;border-bottom:1px dotted #EED97C;overflow:hidden;zoom:1;}
+#choose dt{float:left;}
+#choose dd{float:left;overflow:hidden;zoom:1;}
+#choose dd div{float:left;margin-right:10px;}
+#choose dd a{float:left;background:#fff;}
+#choose dl.color dt{line-height:54px;}
+#choose dl.color a:link,#choose dl.color a:visited{padding:1px;border:1px solid #ccc;}
+#choose dl.color a:hover,#choose dl.color a:active{border:1px solid #FF8500;}
+#choose dl.color .selected a{padding:0;border:2px solid #FF8500;}
+#choose dl.size dt{line-height:24px;}
+#choose dl.size a:link,#choose dl.size a:visited{padding:2px 5px;border:1px solid #ccc;}
+#choose dl.size a:hover,#choose dl.size a:active{border:1px solid #FF8500;}
+#choose dl.size .selected a{padding:1px 4px;border:2px solid #FF8500;}
+#choose .result{padding:10px 10px 0;}
+#choose .btns{padding:10px;overflow:hidden;zoom:1;}
+#choose .btns a{color:#005aa0;}
+#choose .btn-append,#choose .btn-divide,#choose .btn-coll{float:left;margin-right:6px;background-image:url(/images/i/icon_clubs.gif);background-repeat:no-repeat;overflow:hidden;cursor:pointer;font-size:12px;}
+#choose .btn-append{float:right;:block;width:139px;height:38px;background-position:0 -265px;line-height:100px;}
+#choose .btn-divide{width:120px;height:28px;padding:4px 0 4px 22px;margin-top:7px;background-position:0 -426px;border:0;*padding-bottom:0px;}
+#choose .btn-coll{width:78px;height:28px;padding:4px 0;margin-top:7px;background-position:0 -455px;border:0;*padding-bottom:0px;}
+
+
+/*right-extra*/
+.middle .mt{height:28px;line-height:28px;padding:0 10px 8px;border-top:1px solid #EED97C;background:url(/images/i/bg_hotsale.gif) repeat-x 0 -552px;color:#c00;}
+.middle .tab{border-bottom:2px solid #BE0000;margin-bottom:10px;}
+.middle .tab li{position:relative;height:24px;padding:3px 12px 0;background:url(/images/i/icon_clubs.gif) #ccc no-repeat right -150px;overflow:hidden;margin-right:3px;line-height:24px;font-size:14px;font-weight:bold;color:#c30;}
+.middle .tab span{position:absolute;left:0;top:0;z-index:1;width:10px;height:27px;background:url(/images/i/icon_clubs.gif) no-repeat 0 -150px;}
+.middle .tab a{float:none;color:#c30;}
+.middle .tab .curr{background-position:right -178px;color:#fff;}
+.middle .tab .curr span{background-position:0 -178px;}
+.middle .tab .curr a{color:#fff;}
+.middle .mc .extra{padding:5px 10px;border-top:1px solid #F3E6C6;}
+.middle .total{float:right;}
+.middle .total strong{color:#FF7403;}
+.middle .total a:link,.right-extra .total a:visited{color:#005aa0;}
+.middle .join a:link,.right-extra .join a:visited{color:#FF7604;}
+.middle .norecode{padding:0 10px 10px;}
+.middle .iloading{margin-bottom:10px;}
+
+/*co-service*/
+#co-service .mc{padding:0 10px;}
+#co-service ul{padding:5px 0 10px 20px;}
+#co-service li{padding:4px 0;overflow:hidden;zoom:1;}
+#co-service a{color:#005aa0;}
+#co-service .content{float:left;margin-right:15px;}
+#co-service .btn-buy{float:left;display:block;width:51px;height:21px;line-height:21px;background:url(/images/i/icon_clubs.gif) no-repeat -92px -303px;text-align:center;color:#fff;text-decoration:none;overflow:hidden;}
+
+/*co-fitting*/
+#co-fitting .mt{margin-bottom:0;}
+#co-fitting .p-name{height:1.5em;}
+#co-fitting .p-price{margin:5px 0;}
+#co-fitting .p-img img{width:100px;height:75px;}
+#co-fitting .btn-append{display:block;width:91px;height:21px;margin:0 auto;line-height:21px;background:url(/images/i/icon_clubs.gif) no-repeat 0 -303px;color:#fff;}
+#co-fitting .mc{position:relative;width:740px;height:154px;padding:5px 26px;}
+#fitting-list{width:740px;height:154px;overflow:hidden;}
+#fitting-list ul{width:740px;height:154px;overflow:hidden;}
+#fitting-list li{width:135px;height:154px;padding:0 10px;text-align:center;}
+#co-fitting .control{position:absolute;top:50px;width:10px;height:45px;background-image:url(/images/i/icon_clubs.gif);background-repeat:no-repeat;cursor:pointer;}
+#fitting-left{left:8px;background-position:-68px -380px;}
+#fitting-right{right:8px;background-position:-79px -380px;}
+#fitting-left.disabled{background-position:-90px -380px;}
+#fitting-right.disabled{background-position:-101px -380px;}
+
+/*detail*/
+#detail .mc{padding:0 10px 10px;}
+#detail .fore{padding:0;}
+#i-detail{padding:0 10px 10px;overflow:hidden;zoom:1;}
+#i-detail li{float:left;width:450px;}
+#detail .content{padding:10px;width:740px;overflow:hidden;zoom:1;background:url(/images/i/bg_tit_home.gif) repeat-x 0 -597px;}
+#promises{padding:10px;overflow:hidden;zoom:1;background:url(/images/i/bg_tit_home.gif) repeat-x 0 -597px;}
+#state{padding:10px;overflow:hidden;zoom:1;background:url(/images/i/bg_tit_home.gif) repeat-x 0 -597px;}
+#state strong{color:#c30;}
+.Ptable{background:#ccc;}
+.Ptable th{background:#EEF7FE;text-align:right;padding:5px;}
+.Ptable td{padding:2px 5px;background:#fff;}
+.Ptable .tdTitle{text-align:right;width:110px;background:#F5FAFE;}
+
+/*suit*/
+#suit .master{float:left;position:relative;width:145px;padding:0 35px 0 0;text-align:center;}
+#suit .master .icon-add{position:absolute;top:45px;right:0;width:30px;height:30px;background:url(/images/i/icon_clubs.gif) no-repeat -112px -380px;}
+#suit .suits{float:left;width:640px;height:166px;overflow-y:hidden;overflow-x:hidden;}
+#suit .suits ul{height:166px;}
+#suit .suits li{float:left;width:144px;padding:0 8px;text-align:center;}
+#suit .infos{float:right;width:154px;padding:10px 0 8px 6px;border-left:1px solid #ccc;}
+#suit .infos div{margin-bottom:5px;}
+#suit .infos .p-name a{color:#005aa0;}
+#suit .infos .p-saving{color:#008000;}
+#suit .btn-buy{float:left;width:67px;height:23px;text-align:center;line-height:23px;color:#fff;background:url(/images/i/icon_clubs.gif) no-repeat 0 -400px;}
+
+/*comment*/
+#i-comment{padding:10px 0;margin-bottom:10px;border:1px solid #E4E4E4;overflow:hidden;zoom:1;}
+.rate{float:left;width:100px;height:65px;padding:15px 0 0;border-right:1px solid #E4E4E4;text-align:center;color:#E26500;}
+.rate strong{line-height:36px;font-size:30px;font-family:arial;}
+.percent{float:left;width:220px;height:70px;padding:5px 3px 5px 15px;border-right:1px solid #E4E4E4;}
+.percent dl{padding:2px 0;overflow:hidden;zoom:1;}
+.percent dt,.percent dd{float:left;margin-right:5px;}
+.percent .d1{width:150px;border:1px solid #ccc;height:9px;margin-top:4px;overflow:hidden;background:url(/images/i/icon_clubs.gif) #efefef repeat-x 0 -129px;}
+.percent .d1 div{height:9px;background:url(i/icon_clubs.gif) #FF701B repeat-x 0 -119px;overflow:hidden;}
+#i-comment .actor{float:left;position:relative;width:436px;height:70px;padding:5px 15px 5px 36px;border-right:1px solid #E4E4E4;overflow:hidden;zoom:1;}
+#i-comment .actor b{position:absolute;left:15px;top:5px;width:18px;height:18px;background:url(/images/i/icon_clubs.gif) #000 no-repeat -21px -49px;}
+#i-comment .actor span{float:left;}
+#i-comment .actor a{color:#005aa0;}
+#i-comment .actor .u-name{float:left;margin-right:16px;white-space:nowrap;}
+#i-comment .btns{float:right;width:150px;height:65px;padding:10px 0 5px;text-align:center;}
+#i-comment .btn-comment{display:block;width:106px;height:35px;background:url(/images/i/icon_clubs.gif) no-repeat -30px -230px;line-height:100px;overflow:hidden;margin:5px auto 0;}
+#comment .item{position:relative;padding:0 0 2px 130px;margin-bottom:10px;background:#fff;zoom:1;}
+#comment .user{position:absolute;top:10px;left:0;width:130px;text-align:center;color:#999;}
+#comment .user a{color:#005aa0;}
+#comment .u-icon img{border:2px solid #EAEAEA;}
+#comment .i-item{padding:10px 15px 5px;border:1px solid #F3E6C6;background:#FFFCF5;}
+#comment .o-topic{padding:0 0 2px 20px;margin-bottom:10px;border-bottom:1px solid #F9F0DB;overflow:hidden;zoom:1;}
+#comment .topic{float:left;}
+#comment .star{float:left;margin:3px 0 0 5px;}
+.date-comment{float:right;color:#999;}
+.comment-content dl{padding-left:20px;overflow:hidden;zoom:1;}
+.comment-content dt{float:left;color:#FE8F02;}
+.comment-content dd{float:left;width:760px;}
+#comment .item .btns{height:25px;padding:10px 0 5px 50px;line-height:25px;overflow:hidden;zoom:1;}
+#comment .btn-reply,#comment .btn-agree,#comment .btn-oppose{float:left;width:62px;height:25px;background:url(/images/i/icon_clubs.gif) no-repeat 0 -328px;border:0;text-align:center;margin-right:5px;}
+#comment .btn-agree,#comment .btn-oppose{color:#005aa0;}
+#comment .date-buy{float:left;color:#999;}
+#comment .useful{float:right;}
+#comment .useful span{float:left;margin-right:5px;}
+.item-reply{position:relative;padding-left:50px;zoom:1;}
+.item-reply strong{position:absolute;top:5px;left:25px;color:#BEBEBE;font-size:20px;font-family:arial;}
+.item-reply dl{border-top:1px solid #F4F4F4;padding:5px;}
+.item-reply dt{margin-bottom:4px;color:#999;}
+.item-reply dt a{float:left;color:#005aa0;margin-right:8px;}
+#comment .corner{position:absolute;background-image:url(/images/i/icon_clubs.gif);background-repeat:no-repeat;overflow:hidden;}
+#comment .tl{top:0;left:115px;width:20px;height:40px;background-position:0 -206px;}
+#comment .tr{top:0;right:0;width:10px;height:40px;background-position:-20px -206px;}
+#comment .b{bottom:0;width:853px;height:10px;background-position:0 -139px;background-repeat:repeat-x;}
+#comment .bl{bottom:0;left:130px;width:10px;height:10px;background-position:-14px -246px;}
+#comment .br{bottom:0;right:0;width:10px;height:10px;background-position:-20px -246px;}
+*html #comment .tr{right:-1px;}
+*html #comment .br{right:-1px;}
+
+/*consult*/
+#consult .tab{margin-bottom:0;}
+#consult .mc{padding-top:10px;}
+#consult .fore{padding-top:0;}
+#consult .search{position:relative;border-bottom:1px solid #F3E6C6;background:#FFFBE8;padding:10px 20px 10px 300px;zoom:1;}
+#consult .i-search1{position:absolute;top:10px;left:20px;}
+#consult .i-search1 strong{display:block;margin:5px 0 3px;}
+#consult .i-search1 .text{width:160px;border:1px solid #EAD045;padding:2px;}
+#consult .i-search2{border:1px dotted #EED2A9;padding:8px 12px;background:#fff;-moz-border-radius:10px;-webkit-border-radius:10px;}
+#consult .result{padding:5px 20px;background:#F4F9FF;}
+#consult .result strong{color:#f30;}
+#consult .result em{color:#d75509;}
+#consult .result a{color:#005aa0;}
+#consult .item{padding:8px 15px;border:1px solid #fff;}
+#consult .odd{background:#F4F9FF;border:1px solid #EDF0F1;-moz-border-radius:10px;-webkit-border-radius:10px;}
+#consult .user{text-align:right;color:#999;}
+#consult .user span{margin-left:20px;}
+#consult .user .u-level{color:#088100;}
+#consult dl{overflow:hidden;margin-bottom:5px;zoom:1;}
+#consult dt{float:left;width:80px;text-align:right;zoom:1;}
+#consult dd{float:right;width:869px;overflow:hidden;}
+#consult .content{float:left;width:730px;}
+#consult .date-answer{float:right;width:130px;text-align:right;color:#999;}
+#consult .useful{text-align:right;color:#999;}
+#consult .useful a{color:#005aa0;}
+#consult dt b{float:left;width:14px;height:13px;margin:2px 3px 0 0;background-image:url(/images/i/icon_clubs.gif);background-repeat:no-repeat;}
+#consult .ask b{background-position:-72px -14px;}
+#consult .answer{color:#D75509;}
+#consult .answer b{background-position:-57px -14px;}
+#consult .fore .norecode{padding-top:10px;}
+
+/*similar*/
+#similar ul{padding-left:11px;}
+#similar li{width:140px;padding:0 10px;text-align:center;}
+
+/*star*/
+.sa0,.sa1,.sa2,.sa3,.sa4,.sa5{width:64px;height:12px;background-image:url(/images/i/icon_clubs.gif);background-repeat:no-repeat;overflow:hidden;}
+.sa0{background-position:-65px 0;}
+.sa1{background-position:-52px 0;}
+.sa2{background-position:-39px 0;}
+.sa3{background-position:-26px 0;}
+.sa4{background-position:-13px 0;}
+.sa5{background-position:0 0;}

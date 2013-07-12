@@ -1,0 +1,28 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'index' %>&nbsp;&gt;&nbsp;<%= link_to '大分类', :controller => 'admin/big_category', :action => 'list' %>&nbsp;&gt;&nbsp;<%= link_to '中分类', :controller => 'admin/middle_category', :action => 'index' %>&nbsp;&gt;&nbsp;<%= '小分类' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+<div>
+  <div>
+    <table width="80%" border="1" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>小分类名</td>
+        <td>创建时间</td>
+        <td>操作</td>
+      </tr>
+      <% if @all_small_category.present? %>
+        <% @all_small_category.each do |small_category| %>
+          <tr id=tr1>
+            <td><%= small_category.small_category_name %></td>
+            <td><%= small_category.created_at.strftime("%m/%d/%Y") %></td>
+            <td><%= link_to "编辑", edit_admin_small_category_path(small_category.id) %>&nbsp;&nbsp;<%= link_to "删除",  admin_small_category_path(small_category.id),method: :delete, data: { confirm: '确定要删除该分类吗?'}%>&nbsp;&nbsp;<%#= link_to "显示小分类", :controller => :small_category, :action => :list %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      <td><%#= link_to "添加小分类",  :controller => :small_category, :action => :new %></td>
+    </table>
+  </div>
+</div>

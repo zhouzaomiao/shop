@@ -1,0 +1,14 @@
+<div class="m" id="select">
+  <div class="mt"><h1><%= "产品检索" %>：</h1>
+
+    <%= form_tag list_products_path do -%>
+      <%#*<td><%= select("big", "big_category_id", BigCategory.all.collect{|bs| [bs.name, bs.id]}, {:include_blank => true}, :onchange => "change_middle_cate(this),change_small_cate(this)")%></td>
+      <%#*<td><%= select_tag  'middle[middle_category_id]', options_for_select([]), {:id => "mid_cate", :onchange => "change_small_cate(this)"} %></td>
+      <%#*<td><%= select_tag 'small[small_category_id]',options_for_select([]), :id => "sml_cate" %></td>
+      <td><%= text_field_tag "content", params[:content].blank? ? nil : params[:content] %></td>
+      <td><%= submit_tag "搜索" %></td>
+    <% end %>
+      <td><%= flash[:message] %></td>
+    <hr></hr>
+  </div>
+</div>

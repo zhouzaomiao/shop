@@ -1,0 +1,14 @@
+
+<div align="center">
+  <%= flash[:message] %>
+  <tr>
+    <%= form_tag( import_user_admin_users_path, :multipart => true ) do %>
+      Upload file: <%= file_field_tag 'file',:class => 'upload' %><br/>
+    <%= submit_tag( "Upload file" ) %>
+  <% end %>
+
+  <%= link_to '返回', list_admin_users_path %>
+</tr>
+</div>
+
+

@@ -1,0 +1,65 @@
+<div>
+  <table width="100%" border="1" cellpadding="0" cellspacing="0">
+
+    <tr>
+      <td>大分类名</td>
+      <td>创建时间</td>
+      <td>操作</td>
+    </tr>
+
+    <% @all_big_category.each do |big_category| %>
+      <tr id=tr1>
+        <td><%= big_category.name %></td>
+        <td><%= big_category.created_at.strftime("%m/%d/%Y") %></td>
+        <td><a href="#" onclick="show_big_category()">show</a>&nbsp;&nbsp;<a href="#" onClick="show_warn(1)">delete</a>&nbsp;&nbsp;<a href="#" onClick="show_add()">add</a></td>
+      </tr>
+      <% end %>
+      <td><%= link_to "添加大分类",  :controller => :big_category, :action => :new %></td>
+    </table>
+  </div>
+  <br />
+  <div>
+    <table id="big_category1" width="100%" border="1" cellpadding="0" cellspacing="0" style="display:none">
+      <tr>
+        <td>中方类</td>
+        <td>创建时间</td>
+        <td>大分类</td>
+        <td width="30%">action</td>
+      </tr>
+      <tr id=tr1>
+        <td>aaaa</td>
+        <td>2010/06/01</td>
+        <td>qbf</td>
+        <td><a href="#" onclick="show_middle_category()">show</a>&nbsp;&nbsp;<a href="#" onClick="show_warn(1)">delete</a>&nbsp;&nbsp;<a href="#" onClick="show_add()">add</a></td>
+      </tr>
+      <tr id=tr2>
+        <td>bbbb</td>
+        <td>2010/06/01</td>
+        <td>qbf</td>
+        <td><a href="#" onclick="show_middle_category()">show</a>&nbsp;&nbsp;<a href="#" onClick="show_warn(1)">delete</a>&nbsp;&nbsp;<a href="#" onClick="show_add()">add</a></td>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <div>
+    <table id="middle_category1" width="100%" border="1" cellpadding="0" cellspacing="0" style="display:none">
+      <tr>
+        <td>name</td>
+        <td>created_time</td>
+        <td>big_category</td>
+        <td width="30%">action</td>
+      </tr>
+      <tr id=tr1>
+        <td>ddd</td>
+        <td>2010/06/01</td>
+        <td>aaaa</td>
+        <td><a href="product_list.html">show</a>&nbsp;&nbsp;<a href="#" onClick="show_warn(1)">delete</a>&nbsp;&nbsp;<a href="#" onClick="show_add()">add</a></td>
+      </tr>
+      <tr id=tr2>
+        <td>ccc</td>
+        <td>2010/06/01</td>
+        <td>aaaa</td>
+        <td><a href="product_list.html">show</a>&nbsp;&nbsp;<a href="#" onClick="show_warn(1)">delete</a>&nbsp;&nbsp;<a href="#" onClick="show_add()">add</a></td>
+      </tr>
+    </table>
+  </div>

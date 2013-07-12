@@ -1,0 +1,68 @@
+<%#= render 'form' %>
+<div top: 190.2px; left: 430px>
+  <table width="600" align="center">
+
+    <tr>
+      <td><h3><%= @product.name%></h3></td>
+    <hr></hr>
+    </tr>
+    <tr>
+      <td>商品编号：<%= @product.num %></td>
+    </tr>
+    <tr>
+      <td>剩余数量：<%= @product.count%></td>
+    </tr>
+    <tr>
+      <td>价格：<%= @product.price%></td>
+    </tr>
+    <tr>
+      <td>分类情况：属于<%= @product.small_category.middle_category.big_category.name%>/<%= @product.small_category.middle_category.middle_category_name%>/<%= @product.small_category.small_category_name%> 系列</td>
+    </tr>
+
+    <div class="imageRow">
+      <div class="single">
+        <tr>
+          <% if @picture %>
+            <td><a href="<% @product.product_pictrue.try(:avatar).try(:url,:medium) %>" rel="lightbox"><img src="<% @product.product_pictrue.try(:avatar).try(:url,:thumb) %>" width="100" height="40" alt="" /></a></td>
+          <% else %>
+            <td><a href="<%= @product.product_pictrue.try(:avatar).try(:url,:medium) %>" rel="lightbox"><%=  image_tag(@product.product_pictrue.try(:avatar).try(:url,:thumb), :size => "100 * 40", :alt => "")%></a></td>
+          <% end %>
+        </tr>
+      </div>
+    </div>
+
+    <tr>
+      <% if current_user.present? %>
+        <td><%= link_to "加入购物车", "/shopping_carts/add_cart/?id=#{@product.id}" %></td>
+      <% else %>
+        <td><%=link_to  "加入购物车",new_user_session_path %></td>
+      <% end %>
+    </tr>
+    <hr></hr>
+    <tr>
+      <td ><%= @product.describe.html_safe %></td>
+    </tr>
+    <hr></hr>
+  </table>
+  
+  <div align="center">
+    所有用户评论列表：<br/> 
+    <% if @comments.present? %>
+      <% @comments.each do |comment| %>
+        <%= User.find_by_id(comment.user_id).try(:login) %>用户在<%= comment.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>发表了评论：<br/>
+        <%= comment.comment %><br/>
+        评分：<%= comment.score %><br/>
+        <% if current_user.present? %>
+          <%  if comment.user_id == current_user.id %>
+            <%= link_to '删除评论', comment, method: :delete, data: { confirm: '确定删除改评论?' } %>|<%#= link_to '修改评论', comment_manage_users_path(:id => comment.id ) %><br/>
+          <% end %>
+        <%  end %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= will_paginate @comments %>
+
+  
+</div>
+
+

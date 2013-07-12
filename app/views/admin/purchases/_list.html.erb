@@ -1,0 +1,67 @@
+
+
+
+
+<table width="80%" border="1" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center">账单号</td>
+    <td align="center">收件人</td>
+    <td align="center">地址</td>
+    <td align="center">总价</td>
+    <td align="center">创建时间</td>
+    <td align="center">状态</td>
+    <td align="center">操作</td>
+  </tr>
+  <% if @purchases.present? %>
+    <% @purchases.each do |f| %>
+      <tr id=tr1>
+        <td><%= f.id %></td>
+        <td><%= f.address.name %></td>
+        <td><%= f.address.address %></td>
+        <td><%= f.total_price %>¥</td>
+        <td><%= f.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+        <td>
+          <% if f.status == 1 %>
+            待处理
+          <% end %>
+          <% if f.status == 3 %>
+            已发货
+          <% end %>
+          <% if f.status == 4 %>
+            交易成功
+          <% end %>
+          <% if f.status == 5 %>
+            退货
+          <% end %>
+          <% if f.status == 6 %>
+            退货成功
+          <% end %>
+          <% if f.status == 7 %>
+            退货失败
+          <% end %>
+          <% if f.status == 8 %>
+            取消退货
+          <% end %>
+        </td>
+        <td>
+          <% if f.status==1 %>
+            <%= link_to "发货", send_product_admin_purchases_path(:id => f.id), :remote  => true %>&nbsp;&nbsp;<%= link_to "取消", "/admin/purchases/#{f.id}", :method => :delete, data: { confirm: '确定要取消该订单吗?'} %>
+          <% end %>
+          <% if f.status==5 %>
+            <%= link_to "确认退货", send_product_admin_purchases_path(:id => f.id), :remote  => true %>&nbsp;&nbsp;<%= link_to "取消", "/admin/purchases/#{f.id}", :method => :delete, data: { confirm: '确定要取消该订单吗?'} %>
+          <% end %>
+          <% if f.status==8 %>
+            <%= link_to "取退+发货", send_product_admin_purchases_path(:id => f.id), :remote  => true %>&nbsp;&nbsp;<%= link_to "取消", "/admin/purchases/#{f.id}", :method => :delete, data: { confirm: '确定要取消该订单吗?'} %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<% if params[:page].present? %>
+  <%= will_paginate_remote(@purchases, :update=>'admin_purchase_list', :params => params)%>
+<% else %>
+  <% if @purchases.length > 1 %>
+    <%= will_paginate_remote(@purchases, :update=>'admin_purchase_list', :params => params)%>
+  <% end %>
+<% end %>

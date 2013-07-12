@@ -1,0 +1,22 @@
+<br/>
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'index' %>&nbsp;&gt;&nbsp;<%= link_to '大分类一览', :controller => 'admin/big_categories', :action => :list %>&nbsp;&gt;&nbsp;<%= '添加中分类' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+
+
+<div id="model_errors">
+  <%= render :partial => "/common/error_message", :locals => {:obj => @middle_category} %>
+</div>
+<%= form_for @middle_category, :url => {:action => :create} do |f| %>
+  大分类：<%= f.select("big_category_id",BigCategory.all.collect {|bs| [bs.name, bs.id]}, { :selected => @big_category.try("id") })%>
+<br />
+  中分类：<%= f.text_field :middle_category_name %>
+  <%= f.submit '添加' %>&nbsp;&gt;&nbsp;
+  <%= link_to '取消', :controller => 'admin/middle_categories', :action => :list, :id => @big_category.id %>
+<% end %>
+
+

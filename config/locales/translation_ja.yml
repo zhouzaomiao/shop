@@ -1,0 +1,48 @@
+ja:
+  activerecord:
+    models:
+      address: "订单"
+      product: "商品"
+      admin: "管理员"
+      user: "用户"
+      big_category: "大分类"
+      middle_category: "中分类"
+      small_category: "小分类"
+      comment: "评论"
+    attributes:
+      address:
+        name: "名字"
+        tel: "电话号码"
+        address: "收货地址"
+      product:
+        errors: "错误提示"
+        name: "名字"
+        num: "电话号码"
+        count: "商品数量"
+        cost: "进价"
+        price: "出售价格"
+        describe: "详细信息"
+        picture: "图片"
+      admin:
+        login: "用户名"
+        email: "邮箱"
+        password: "密码"
+        password_confirmation: "再次输入密码"
+      user:
+        login: "用户名"
+        email: "邮箱"
+        password: "密码"
+        password_confirmation: "再次输入密码"
+      big_category:
+        name: "大分类名"
+      middle_category:
+        middle_category_name: "中分类名"
+      small_category:
+        small_category_name: "小分类名"
+      comment:
+        comment: "内容"
+
+
+
+
+

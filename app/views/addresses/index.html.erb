@@ -1,0 +1,68 @@
+<div class="List_cart">
+  <h2>账单中的商品</h2>
+  <div ><!--账单列表开始-->
+    <div id=productList>
+      <table id=CartTb class=Table cellSpacing=0 cellPadding=0 width="65%">
+        <tbody>
+          <tr class="align_Center Thead">
+            <td style="height: 30px"width="16%">商品编号</td>
+            <td>商品名称</td>
+            <td width="15%">单价</td>
+            <td width="10%">商品数量</td>
+            <td width="8%">删除商品</td>
+          </tr>
+
+          <% if @shopping_carts.present? %>
+            <% @shopping_carts.each do |cart| %>
+              <tr class=align_Center>
+                <td style="padding_bottom: 5px; padding_left: 0px; padding_right: 0px; padding_top: 5px"><%= cart.product.num %></td>
+                <td class=align_Left><span><%= link_to "#{cart.product.name}", :controller => :products, :action => "show", :id => cart.product_id %></span></td>
+                <td><span class=price>¥<%= cart.purchase_price %></span></td>
+                <td><%=cart.quantity%></td>
+                <td><%=link_to "删除", purchase_path(:id => cart.product_id), method: :delete, data: { confirm: '确定删除?' },:title => "删除"%></td>
+              </tr>
+            <% end %>
+          <% end %>
+
+        <td style="height: 30px" class="align_Right Tfoot" colSpan=7><span style="font-size:  14px"><b>商品总金额(不含运费)：</b><span id=cartBottom_price class=price>￥<span id="count"><%= @count %></span></span>元</span></td>
+        </tbody>
+      </table>
+    </div><!--商品添加区开始-->
+    <!--商品列表结束-->
+    <%= form_for(@address, :action => :create) do |f| %>
+      <td><%= render :partial => "/common/error_message", :locals => {:obj => @address} %></td>
+      <table id=CartTb class=Table cellSpacing=0 cellPadding=0 style="height: 80px" width="35%" >
+        <div class="field">
+          <tr>
+            <td><%= f.label :收件人 %></td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+        </div>
+        <div class="field">
+          <tr>
+            <td><%= f.label :联系电话 %></td>
+            <td><%= f.text_field :tel %></td>
+          </tr>
+        </div>
+        <div class="field">
+          <tr>
+            <td><%= f.label :送货地址 %></td>
+            <td ><%= f.text_area :address %></td>
+          </tr>
+        </div>
+        <td><%= f.submit "确定付款"  %></td>
+      <% end %>
+    </table>
+
+    <ul style="marging-bottom: 0px" class=cart_op>
+      <li class=li3><div id=submit_info></div>
+        <div style="text-aling: right" id=submit_btn><span style="color: #999; font-size: 12px; margin-right:  3px"></span><%=link_to (image_tag src="/assets/btn_continue.jpg" ),list_products_path  %> </div>
+        <div style="border-bottom: #fff 1px solid; text-align: right; border-left: #fff 1px solid; padding-right: 9px; border-top: #fff 1px solid; border-right: #fff 1px solid" id=submit_error></div><input style="display:  none" id=BtnRunOrder_server onclick=runOrderInfo_server(this); value=提交 type=button/>
+      </li>
+    </ul>
+  </div>
+  <div class=round>
+    <div class=lround></div>
+    <div class=rround></div>
+  </div>
+</div>

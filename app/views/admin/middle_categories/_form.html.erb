@@ -1,0 +1,19 @@
+<div>
+  <div id="model_errors">
+    <%= flash[:message] %>
+  </div>
+  <%= form_tag(:action => :create, :method => :post, :align => :center) do -%>
+    <%= select("post", "big_category_id",BigCategory.all.collect {|bs| [bs.name, bs.id]}, { :include_blank => true,:selected => params[:big_category].to_i })%>
+    <br/>
+    中分类：<%= text_field_tag 'middle_category[]' %><%= link_to "继续增加中分类","#",:onclick => "addtext(this)"%>
+    <%= submit_tag '添加' %>
+  <% end %>
+</div>
+
+<script  language="javascript" defer="defer">
+  function addtext(iem)
+  {
+    $(iem).before('<div> 中分类：<%= text_field_tag 'middle_category[]' %><a href="#" onclick="$(this).parent().remove();">移除</a></div>');
+  }
+</script>
+

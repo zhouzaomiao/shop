@@ -1,0 +1,12 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= link_to '大分类一览', :controller => 'admin/big_categories', :action => :list %>&nbsp;&gt;&nbsp;<%= '添加大分类' %>
+  </h2>
+</div>
+<hr></hr>
+<div>
+  <%= form_for @big_category, :url => {:action => 'create'} do |f| %>
+  <br> <%= render :partial => "/common/error_message", :locals => {:obj => @big_category} %></br>
+  <br>请输入要创建的大分类名： <%= f.text_field :name %>
+    <%= submit_tag '添加' %>&nbsp;&gt;&nbsp;<%= link_to '取消', :controller => 'admin/big_categories', :action => :list  %></br>
+  <% end %>
+</div>

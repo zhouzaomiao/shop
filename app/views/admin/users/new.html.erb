@@ -1,0 +1,18 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '用户一览' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+<%= render :partial => "/common/error_message", :locals => {:obj => @user} %>
+<%= form_for(@user,:url => admin_users_path) do |f| %>
+  <%= f.label "用户名：" %><br />
+  <%= f.text_field :login %><br />
+  <%= f.label "邮箱：" %><br />
+  <%= f.text_field :email %><br />
+  <%= f.label "密码：" %><br />
+  <%= f.password_field :password %><br />
+  <%= f.label "确认密码：" %><br />
+  <%= f.password_field :password_confirmation %><br />
+  <%= f.submit "提交" %>
+<% end %>

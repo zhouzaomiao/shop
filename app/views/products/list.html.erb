@@ -1,0 +1,79 @@
+<%#= render 'form' %>
+
+<div style="<%= category_user_staly %>" cellSpacing=0 cellPadding=0 width=150 border=0>
+  <h2>商品分类</h2>
+  <% @big_category_list.each do |big| %>
+    <h4><%= link_to "#{big.name}", list_products_path(:category_id => big.id) %></h4>
+    <% big.middle_categories.each do |f| %>
+      <span>&nbsp;&nbsp<%= link_to "#{f.middle_category_name}", list_products_path(:middle_category_id => f.id) %>
+        <% f.small_categories.each do |s| %>
+          <ins>
+            &nbsp;-&nbsp;<%= link_to "#{s.small_category_name}",list_products_path(:small_category_id => s.id) %>
+          </ins>
+        <% end %>
+      </span>
+      <br />
+    <% end %>
+  <% end %>
+</div>
+<div style="<%= category_big_staly %>" cellSpacing=0 cellPadding=0 width=150 border=0>
+  <h2>商品分类</h2>
+  <% if @middle_name.present? %>
+    <% @middle_name.each do |f| %>
+      <span>&nbsp;&nbsp<%= link_to "#{f.middle_category_name}", list_products_path(:middle_category_id => f.id) %>
+        <% f.small_categories.each do |s| %>
+          <ins>
+            &nbsp;-&nbsp;<%= link_to "#{s.small_category_name}",list_products_path(:small_category_id => s.id) %>
+          </ins>
+        <% end %>
+      </span>
+      <br />
+    <% end %>
+  <% end %>
+</div>
+
+<div style="<%= category_middle_staly %>" cellSpacing=0 cellPadding=0 width=150 border=0>
+  <h2>商品分类</h2>
+  <% if @small_name.present? %>
+    <% @small_name.each do |s| %>
+      <ins>
+        &nbsp;&nbsp;<%= link_to "#{s.small_category_name}",list_products_path(:small_category_id => s.id) %>
+      </ins>
+    <% end %>
+  <% end %>
+</div>
+
+
+<hr></hr>
+<table>
+  <div id="list">
+    <tr>
+      <%@products.each_with_index do |product,index|%>
+        <td>
+          <%=link_to (image_tag product.product_pictrue.try(:avatar).try(:url,:thumb),:onerror => "this.src='/images/noimage.jpg'" ) ,product_path(product.id) %> <br/>
+          <%=link_to "#{product.name}" , product_path(product.id)%><br/>
+          价格: ¥<%= "#{product.price}" %>.00  元<br/>
+          <% if current_user.present? %>
+            <%=link_to  "加入购物车",add_cart_shopping_carts_path(:id => product.id) %>
+          <% else %>
+            <%=link_to  "加入购物车",new_user_session_path %>
+          <% end %>
+        </td>
+        <% if (index+1) % 4 == 0 %>
+        </tr>
+        <tr>
+        <%end%>
+      <%end%>
+    </tr>
+  </div>
+  <tr>
+    <td align="center" colspan="3">
+      <%= will_paginate @products ,:params => params%>
+    </td>
+  </tr>
+</table>
+
+
+
+
+

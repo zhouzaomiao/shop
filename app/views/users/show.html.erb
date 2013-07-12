@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<h1>个人信息中心</h1>
+<%= form_for(@user) do |f| %>
+
+  <div class="field">
+    <tr>
+      <td><%= f.label :用户名 %></td><br/>
+    <td><%= f.text_field :login %></td>
+  </tr>
+  </div>
+  <div class="field">
+    <tr>
+      <td><%= f.label :邮箱 %></td><br/>
+    <td><%= f.text_field :email %></td>
+  </tr>
+  </div>
+  <div class="field">
+    <tr>
+      <td><%= f.label :设置新密码 %></td><br/>
+    <td><%= f.password_field :password %></td>
+  </tr>
+  </div>
+  <div class="field">
+    <tr>
+      <td><%= f.label :确认密码 %></td><br/>
+    <td><%= f.password_field :password_confirmation %></td>
+  </tr>
+  </div>
+  <td><%= f.submit "提交" %></td>
+<% end %>
+<%= link_to '返回去购物', list_products_path %> | <%= link_to "购物历史记录", list_product_users_path %>
+

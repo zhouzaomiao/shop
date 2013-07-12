@@ -1,0 +1,40 @@
+﻿/*entry*/
+#entry .mt{height:33px;background:url(/assets/tit_regi.jpg) repeat-x 0 -34px;}
+#entry .mt h2{float:left;height:33px;padding-left:15px;background:url(/assets/tit_regi.jpg) no-repeat 0 0;line-height:33px;}
+#entry .mt span{float:right;height:33px;line-height:33px;text-align:right;}
+#entry .mt b{float:right;width:10px;height:33px;background:url(/assets/tit_regi.jpg) no-repeat 0 -68px;}
+#entry .mc{padding:40px 20px 20px;border:solid #D1D1D1;border-width:0 1px 1px;}
+#entry .form{float:left;width:600px;overflow:hidden;}
+#entry .item{padding-top:5px;height:50px;line-height:26px;}
+#entry #autoentry{height:40px;}
+#entry .item a:link,#entry .item a:visited{text-decoration:underline;}
+#entry .label{width:150px;text-align:right;font-size:14px;}
+#entry .text{width:240px;height:16px;padding:4px 3px;border:1px solid #bbb;font-size:14px;font-family:arial,"宋体";}
+#entry .text-1{width:100px;}
+#entry .blank{width:16px;height:16px;margin:2px 5px 0;}
+#entry .mar{margin-right:10px;}
+#entry .img img{height:26px;margin:0 5px;}
+#entry .succeed{background:url(/assets/pwdstren.gif) no-repeat -105px 0;}
+#entry .btn-entry{width:87px;height:35px;background:url(/assets/bg_regis.jpg) no-repeat -155px -150px;font-size:14px;font-weight:bold;color:#fff;}
+#entry .highlight1{border:1px solid #EFA100;outline:2px solid #FFDC97;*border:2px solid #ffcc66;*padding:3px 2px;}
+#entry .highlight2{border:1px solid #f00;outline:1px solid #FFC1C1;color:#f00;}
+#entry .pwdbg{background:#FFF8EB;}
+#entry .focus{color:#999;line-height:22px;*line-height:20px;}
+#entry select{margin-top:5px;}
+#entry .null,#entry .error{color:red;line-height:22px;*line-height:20px;}
+#entry .checkbox{margin-top:6px;*margin-top:2px;}
+#entry .extra{padding-left:94px;}
+#entry .extra .btns{float:left;overflow:hidden;height:24px;padding-right:5px;margin-right:5px;line-height:24px;font-weight:bold;background-image:url(/assets/bg_regis.jpg);background-repeat:no-repeat;*line-height:26px;}
+#entry .extra .btns a:link,#entry .extra .btns a:visited{text-decoration:none;}
+.net163{width:88px;background-position:-27px -33px;}
+/*guide*/
+#guide{float:right;width:300px;height:220px;padding:60px 0 20px 20px;border-left:1px solid #E7E7E7;}
+#guide .content{color:#666;padding:10px 0 0;}
+#guide .btn-personal{width:137px;height:35px;background:url(/assets/bg_regis.jpg) no-repeat 0 -185px;line-height:35px;margin:20px auto;font-weight:bold;font-size:14px;}
+#guide .btn-personal:hover{text-decoration:none;}
+#guide .btns{border-top:1px dotted #ccc;padding-top:10px;text-align:center;}
+#guide .btns a:link,#guide .btns a:visited{margin:0 5px;color:#005aa0;}
+/*-moz-*/
+@-moz-document url-prefix(){#entry .btn-entry{padding-bottom:5px;}}
+@-moz-document url-prefix(){#entry .checkbox{margin-top:7px;}}
+@-moz-document url-prefix(){.qq,.alipay,.renren{line-height:22px;}}

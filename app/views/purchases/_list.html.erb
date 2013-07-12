@@ -1,0 +1,77 @@
+
+
+<div class="m" id="allsort">
+  <div class="mt">
+    <h2>账单中心</h2>
+  </div>
+  <br />
+  <p class="purchaselink">
+    <%= link_to "所有账单",my_indent_purchases_path, :class => params[:status_id].blank? ? "red" : "" %>(<%= @count %>)
+    <%= link_to "待处理账单", my_indent_purchases_path(:status_id => 1), :class => params[:status_id].to_i == 1 ? "red" : "", :remote  => true  %>(<%= @purchases_pending %>)
+    <%= link_to "已发货账单", my_indent_purchases_path(:status_id => 3), :class => params[:status_id].to_i == 3 ? "red" : "", :remote  => true  %>(<%= @purchases_sent %>)
+    <%= link_to "退货账单", my_indent_purchases_path(:status_id => 5), :class => params[:status_id].to_i == 5 ? "red" : "", :remote  => true  %>(<%= @purchases_return %>)
+  </p>
+
+  <!--m special end-->
+</div>
+
+<div class="m" id="purchaselist" align="center" >
+  <fieldset>
+    <div>
+      <td><h4><%= flash[:message] %></h4></td>
+    </div>
+
+    <legend>账单集</legend>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr class="listtitle">
+        <th scope="col">账单编号</th>
+        <th scope="col">下单时间</th>
+        <th scope="col">收货人</th>
+        <th scope="col">订单状态</th>
+        <th scope="col">操作</th>
+      </tr>
+      <% if @purchases.present? %>
+        <% @purchases.each do |f| %>
+          <tr>
+            <td><%= f.id %></td>
+            <td><%= f.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+            <td><%= f.address.name %>
+              <% if f.status == 1 %>
+              <td>带处理</td>
+            <% end %>
+            <% if f.status == 3 %>
+              <td>已发货</td>
+            <% end %>
+            <% if f.status == 5 %>
+              <td>退货进行中</td>
+            <% end %>
+            </td>
+            <td>
+              <% if f.status == 1 %>
+                <%= link_to "查看", :controller => :purchases, :action => :show, :id => f.id  %>
+                <%= link_to "取消", return_purchase_purchases_path(:id => f.id), :remote  => true  %>
+              <% end %>
+
+              <% if f.status == 3 %>
+                <%= link_to "查看", :controller => :purchases, :action => :show, :id => f.id  %>
+                <%= link_to "确认收货", confirm_product_purchases_path(:id => f.id, :status_num => f.status) %>
+              <% end %>
+              <% if f.status == 5 %>
+                <%= link_to "查看", :controller => :purchases, :action => :show, :id => f.id  %>
+                <%= link_to "取消退货", cancel_purchase_purchases_path(:id => f.id), :remote  => true  %>
+              <% end %>
+            </td>
+
+          </tr>
+        <% end %>
+      <% end %>
+      <tr>
+        <td colspan="4" align="right">
+          <% if @purchases.present? %>
+          <td><%= will_paginate @purchases ,:params => params%></td>
+        <% end %>
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+</div>

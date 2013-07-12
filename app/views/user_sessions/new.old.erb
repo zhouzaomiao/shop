@@ -1,0 +1,15 @@
+<table  align="center">
+  <%= flash[:notice] %>
+  <%= form_for(@user_session) do |f| %>
+
+    <%=  f.label :用户名 %>
+    <%= f.text_field :login %>
+
+    <%= f.label :密码 %>
+    <%= f.password_field :password %>
+
+    <td align="center"><%= f.submit :登入 %>
+      <%= link_to '注册新用户', new_user_path, :title => "注册新用户"%></td>
+
+  <% end %>
+</table>

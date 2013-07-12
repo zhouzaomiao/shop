@@ -1,0 +1,88 @@
+<h2><strong>我挑选的商品</strong></h2>
+<table id=CartTb class=Table cellSpacing=0 cellPadding=0 width="65%">
+  <tbody>
+    <tr class="align_Center Thead">
+      <td style="HEIGHT: 30px" width="12%">商品编号</td>
+      <td>商品名称</td>
+      <td width="15%">价格</td>
+      <td width="13%">商品数量</td>
+      <td width="8%">删除商品</td>
+    </tr>
+    <% if @shopping_carts.present? %>
+      <% @shopping_carts.each do |cart| %>
+        <tr class=align_Center>
+          <td style="padding-bottom: 5px; PADDING-LEFT: 0px; padding-righi: 0px; padding-top: 5px"><%= cart.try(:product).num %></td>
+          <td class=align_Left><span><%= link_to "#{cart.product.name}", :controller => :products, :action => "show", :id => cart.product_id %></span></td>
+          <td><span id="<%= cart.product.id %>_price" class=price>¥<%= cart.purchase_price %></span></td>
+          <td>
+            <%= link_to_function(image_tag("/assets/bag_close.gif"), "changeBar(#{cart.product.id},'-'),add_count_to_cart('cut')") %>
+
+            <input id=<%= cart.product.id %> onblur="changeProductCount(document.getElementById(<%= cart.product.id %>),<%= cart.product.id %>);add_count_to_cart($('#<%= cart.product.id %>').val());" style="width:30px" onkeydown="if(event.keyCode == 13) event.returnValue = 'false'"  value="<%=cart.quantity%>" maxLength="4" type="text" name="txtChange220644" class="quantity_value"></input>
+            
+            <%= link_to_function(image_tag("/assets/bag_open.gif"), "changeBar(#{cart.product.id},'+'),add_count_to_cart('add')") %>
+          </td>
+          <td><%=link_to "删除", shopping_cart_path(cart.product_id), method: :delete, data: { confirm: '确定删除?' },:title => "删除"%></td>
+        </tr>
+      <% end %>
+    <% end %>
+  <td><%= link_to "添加到账单",:controller => :addresses, :action => :index %></td>
+  <td style="height: 30px" class="align_Right Tfoot" colSpan=7><span style="font-size: 14px"><b>商品总金额(不含运费)：<span id=cartBottom_price class=price>￥<span id="count"><%= @count %></span></span>元</b></span></td>
+</tbody>
+</table>
+
+<script  language="javascript" defer="defer">
+  function changeBar(txt_id, type)
+  {
+    var txt = document.getElementById(txt_id);//这里是获取文本输入框
+    var source_num = parseInt(txt.value);//获取文本框值
+    if (source_num == 1 && type == '-')
+    {
+      alert('请最少购买一个商品');
+      return;
+    }
+    var to_num = source_num;
+    if (type == '+')
+    {    
+      to_num += 1;
+      jQuery.ajax('/shopping_carts/total_prices?id=' + txt_id+'&qty='+to_num,{
+        method: "get",
+        dataType: "html",
+        success: function(data){
+          if (data==""){
+            to_num -= 1;
+            txt.value = to_num;
+          }
+          $('#count').html(data);
+        }
+      })
+    }
+    else if (type == '-')
+    {
+      to_num -= 1;
+      jQuery.ajax('/shopping_carts/down_total_prices?id=' + txt_id,{
+        method: "get",
+        dataType: "html",
+        success: function(data){
+          $('#count').html(data);
+        }
+      })
+    }
+
+    txt.value = to_num;
+  }
+  function changeProductCount(obj,product_id){
+    
+    var count = obj.value;
+    jQuery.ajax('/shopping_carts/input_quantity?quantity=' + count + '&product_id=' + product_id,{
+      method: "get",
+      dataType: "html",
+      success: function(data){
+        $('#count').html(data);
+      }
+    })
+
+  }
+
+</script>
+
+

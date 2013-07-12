@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Products: <%= controller.action_name %></title>
+    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+<%#= javascript_include_tag 'shadowbox/shadowbox' %>
+    <%= csrf_meta_tags %>
+<%#= stylesheet_link_tag 'shadowbox.css' %>
+    <%= stylesheet_link_tag 'base' %>
+    <%= stylesheet_link_tag 'home' %>
+    <%= stylesheet_link_tag 'plist' %>
+    <%= stylesheet_link_tag 'shoppingcart'%>
+    <%= stylesheet_link_tag 'common' %>
+    <%= stylesheet_link_tag 'lightbox' %>
+    <%= stylesheet_link_tag 'read' %>
+
+<%#= stylesheet_link_tag 'screen' %>
+  </head>
+  <body>
+    <!-- header begin -->
+    <% if current_user.present? %>
+      <div id="shortcut">
+        <div class="w">
+          <ul>
+            <li class="fore1">您好，<%= current_user.login %>欢迎来到商城！<span><%= link_to "个人中心","/users/#{current_user.id}" %></span> </li>
+            <li class="fore2"><%=link_to "我的订单","/purchases/my_indent" %></li>
+            <li class="fore2"><%= link_to "注销", logout_users_path %></li>
+          </ul>
+          <span class="clr"></span>
+        </div>
+      </div>
+    <% else %>
+      <div id="shortcut">
+        <div class="w">
+          <ul>
+            <li class="fore1">您好，欢迎来到商城！<span><%= link_to "[请登入]", new_user_session_path %>，新用户？<%= link_to "[免费注册]", signup_users_path %></span> </li>
+          </ul>
+          <span class="clr"></span>
+        </div>
+      </div>
+    <% end %>
+    <div class="w" id="header">
+      <ul id="nav">
+        <li id="nav-index"><%= link_to "首页", list_products_path(:big_show => "123")%></li>
+        <% if @big_category_list.present? %>
+          <% @big_category_list.each do |f| %>
+            <li id="nav-index"><%= link_to "#{f.name}", list_products_path(:category_id => f.id )%></li>
+          <% end %>
+        <% end %>
+      </ul>
+
+      <span class="clr"></span>
+      <div id="o-search">
+        <div class="corner"></div>
+        <div id="search" class="form">
+          <%= form_tag list_products_path do %>
+            <div id="i-search">
+  <%#*<input type="text" id="key" value="ThinkPad X200" onfocus="if (this.value==this.defaultValue){this.value='';this.style.color='#333'}"%>
+  <%#*onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#999'}" onkeyup="$('#tie').show()"/>%>
+              <%= text_field_tag 'key', 'ThinkPad X200', :onfocus => "if (this.value==this.defaultValue){this.value='';this.style.color='#333'}"%>
+              <ul id="tie" class="hide"></ul>
+            </div>
+            <%= button_to_function "搜 索", "search('key')", :id => 'btn-search' %>
+          <% end %>
+        </div >
+
+        <ul id="mycart">
+          <li id="i-mycart" class="fore1">
+            <% if current_user.present? %>
+              <%= link_to "购物车有", "../shopping_carts" %><span id="quantity_1"><%= @count_quantiry %></span>件商品
+            <% else %>
+              <%= link_to "购物车有 0 件商品", "../user_sessions/new" %>
+            <% end %>
+            <div class="hide" id="o-mycart-list">
+              <div id="mycart-list"></div>
+            </div>
+          </li>
+        </ul>
+        <span class="clr"></span>
+      </div>
+    </div>
+    <!-- header end -->
+
+
+
+
+    <!-- w main begin -->
+    <div class="w main">
+
+      <!--left begin-->
+      <div class="left">
+        <div class="m" id="popularity">
+          <div class="mt">
+            <h2>商品排行榜</h2>
+          </div>
+          <% a = 0 %>
+          <% if @product_arr.present? %>
+            <% @product_arr.each do |product| %>
+              <div class="mc">
+                <ul class="tabcon">
+                  <li class='fore'>
+                    <span><%= a += 1 %></span>
+                    <div class="p-img">
+                      <td><%=link_to (image_tag product.product_pictrue.try(:avatar).try(:url,:thumb),:onerror => "this.src='/images/pictrues/12.jpg'" ) ,product_path(product.id) %></td>
+                    </div>
+                    <div class="p-name">
+                      <td><%=h link_to  "#{product.name}[..]",product_path(product.id) %></td>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
+          <% end %>
+        </div>       
+      </div>
+    </div>
+
+
+    <div id = "comment_edit">
+      <% if flash[:message] -%>
+        <div id="notice">
+          <%= flash[:message] %>
+        </div>
+      <% end -%>
+      <div id = "indent_ajax">
+        <%= yield %>
+      </div>
+    </div>
+    <div class="w">
+      <div id="service">
+        <div class="clr"></div>
+      </div>
+    </div>
+    <!-- footer begin -->
+    <div class="w" id="footer">
+      <div class="copyright">
+        智科&copy;2013-2015&nbsp;&nbsp;&nbsp;zzm版权所有
+      </div>
+    </div>
+    <!-- footer end -->
+    <script>
+      function change_middle_cate(obj)
+      {
+        jQuery.ajax('/products/get_mid_cate?id=' + obj.value,{
+          method: "get",
+          dataType: "html",
+          success: function(data){
+            $('#mid_cate').html(data);
+          }
+        })
+      }
+    </script>
+    <script>
+      function change_small_cate(obj)
+      {
+        jQuery.ajax('/products/get_sma_cate?id=' + obj.value,{
+          method: "get",
+          dataType: "html",
+          success: function(data){
+            $('#sml_cate').html(data);
+          }
+        })
+      }
+    </script>
+    <script>
+      function search(key)
+      {
+        var obj =  document.getElementById(key);
+        jQuery.ajax('/products/search?content=' + obj.value,{
+          method: "get",
+          dataType: "html",
+          success: function(data){
+            $('#list').html(data);
+          }
+        })
+      }
+    </script>
+  </body>
+</html>

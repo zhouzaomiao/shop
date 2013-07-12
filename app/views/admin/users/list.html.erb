@@ -1,0 +1,71 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '用户一览' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+<div>
+
+  <%=  form_tag batch_delete_admin_users_path, :id => "form",:name=>"form" do %>
+
+    <div id="model_errors" >
+      <h2>用户管理：&nbsp;&gt;&nbsp<%= flash[:message] %></h2>
+    </div>
+    <table width="80%" border="1" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>
+          <a href="#" onclick="SelectAll()" title="全选/反选">全选/反选</a>
+        </td>
+        <td align="center">姓名</td>
+        <td align="center">邮箱</td>
+        <td align="center">操作</td>
+      </tr>
+      <% if @users.present? %>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= check_box_tag("id[]", user.id) %></td>
+            <td><%= user.login %></td>
+            <td><%= user.email %></td>
+            <td><%= link_to '详细', :action => :show, :id => user.id %>
+              <%= link_to '编辑', edit_admin_user_path(user) %>
+              <%= link_to '删除', admin_user_path(user), method: :delete, data: { confirm: '确定删除?' },:title => "删除" %>
+              <%#=  link_to_function "删除", "if(confirm('删除してもよろしいですか？')){window.location.href='#{admin_user_path(user)}'}", :method=>'delete' %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+      <tr>
+        <td align="center">
+          <a href="javascript:void(0);" onclick="deletes();" title="批量删除">批量删除</a>
+        </td>
+        <td colspan ="3" align="center">
+          <%= link_to '创建新用户', new_admin_user_path %>
+          <%= link_to '所有用户资料导出', export_admin_users_path(:csv) %>
+          <%= link_to '导入用户', import_user_admin_users_path %></td>
+      </tr>
+
+    </table>
+  <%  end %>
+  <table align="center">
+    <tr>
+      <td><%= will_paginate @users %></td>
+    </tr>
+  </table>
+</div>
+
+<%=  javascript_tag do %>
+
+  function SelectAll() {
+  var checkboxs = document.getElementsByName("id[]");
+  for (var i=0; i<checkboxs.length; i++) {
+    var e = checkboxs[i];
+    e.checked = !e.checked;
+    }
+    }
+
+    function deletes() {
+    alert("==========");
+    $('#form').submit();
+    }
+  <%end%>

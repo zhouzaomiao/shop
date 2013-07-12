@@ -1,0 +1,31 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '营业额一览' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+
+
+<%= form_tag price_collect_admin_purchases_path do %>
+&nbsp;<br />
+
+<% if  params[:price].present? %>
+<%=  select("price", "count", Purchase.time_count{|p| [ p.name, p.id ] },{:selected => params[:price][:count]} )%>
+<%else%>
+<%=  select("price", "count", Purchase.time_count{|p| [ p.name, p.id ] }) %>
+<%end%>
+<%= submit_tag "统计" %>
+<% end %>
+
+<br />
+<fieldset>
+  <legend>营业额</legend>
+	￥<%= @price_const %>
+</fieldset>
+<br />
+<fieldset>
+  <legend>盈利</legend>
+	￥<%= @profit_const %>
+</fieldset>
+

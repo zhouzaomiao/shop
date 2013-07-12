@@ -1,0 +1,59 @@
+
+
+<div id="shortcut">
+  <div class="w">
+
+    <!--end #tool--><span class="clr"></span>
+  </div>
+</div>
+<!--[if gte IE 6]>
+    <script type="text/javascript">$("#shortcut .sub").hoverForIE6();</script>
+<![endif]-->
+<div class="w" id="logo">
+  <div>
+    <a href=""></a>
+  </div>
+</div>
+<%= flash[:notice] %>
+<div class="w" id="entry">
+  <div class="mt">
+    <h2>管理员登录</h2>
+    <b></b>
+  </div>
+  <div class="mc" style="padding-top:20px;">
+    <div class="form">
+      <%= form_for @admin_session, :url => admin_admin_sessions_path, :html => {:method => :post} do |f| %>
+        <div class="item">
+          <span class="label">账号：</span>
+          <div class="fl">
+            <td><%= f.text_field :login %><br/></td>
+          </div>
+        </div>
+        <div class="item">
+          <span class="label">密码：</span>
+          <div class="fl">
+            <td><%= f.password_field :password %></td>
+            <label></label>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="label">&nbsp;</span>
+          <%= f.submit "登入", :class => "btn-img btn-entry", :id => "loginsubmit" %>
+        </div>
+      <% end %>
+    </div><!--[if !ie]>form end<![endif]-->
+
+    <!--[if !ie]>guide end<![endif]--><span class="clr"></span>
+  </div>
+  <!--[if !ie]>mc end<![endif]-->
+</div>
+<!--[if !ie]>regist end<![endif]-->
+<!--[if !ie]>nav-footer end<![endif]-->
+<div class="w" id="copyright">
+  <br/>
+  Copyright&copy;2004-2010&nbsp;&nbsp;360&nbsp;版权所有
+  <br/>
+</div>
+<!--[if !ie]>copyright end<![endif]-->
+

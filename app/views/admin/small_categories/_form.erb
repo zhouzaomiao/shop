@@ -1,0 +1,4 @@
+大分类：<%= f.select("big_category_id", BigCategory.all.collect {|bs| [bs.name, bs.id]}, { :selected => @middle_category.big_category_id.to_i  },:onchange => "change_cate(this)")%>
+小分类：<%= f.select "middle_category_id", options_for_select([] + @middle_categories,@middle_category.id),  :id => "mid_cate".to_i %>
+<br />
+小分类：<%= f.text_field 'small_category_name' %>

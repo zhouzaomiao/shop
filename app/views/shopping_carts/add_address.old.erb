@@ -1,0 +1,26 @@
+<div>
+  <%= form_for(@address,:url => add_address_shopping_carts_path) do |f| %>
+    <td><%= render :partial => "/common/error_message", :locals => {:obj => @address} %></td>
+    <table id=CartTb class=Table cellSpacing=0 cellPadding=0 style="height: 80px" width="35%" >
+      <div class="field">
+        <tr>
+          <td><%= f.label :收件人 %></td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+      </div>
+      <div class="field">
+        <tr>
+          <td><%= f.label :联系电话 %></td>
+          <td><%= f.text_field :tel %></td>
+        </tr>
+      </div>
+      <div class="field">
+        <tr>
+          <td><%= f.label :送货地址 %></td>
+          <td ><%= f.text_area :address %></td>
+        </tr>
+      </div>
+      <td><%= f.submit "下一步"  %></td>
+    <% end %>
+  </table>
+</div>

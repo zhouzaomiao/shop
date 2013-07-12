@@ -1,0 +1,19 @@
+<table  align="center">
+  <tr><td align="center"><p id="notice"><%= notice %></p>
+      <h2>详细信息</h2></td></tr>
+</table>
+<table cellspacing="1" cellpadding="0" bordercolor="#778899" border="1" align="center" width="500">
+  <tr>
+    <td align="center">用户名</td>
+    <td align="center">邮箱</td>
+    <td align="center">操作</td>
+  </tr>
+  <tr>
+    <td align="center"><%= @user.login %></td>
+    <td align="center"><%= @user.email %></td>
+    <td align="center">
+      <%= link_to '编辑', edit_admin_user_path(@user) %>
+      <%= link_to '返回', list_admin_users_url %>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,10 @@
+<p class="purchaselink">
+  <span class="red"><%= link_to "所有账单", admin_purchases_path, :class => params[:status_id].blank? ? "red" : "", :remote  => true %>(<%= @count %>)</span>
+  <%= link_to "待处理账单", admin_purchases_path(:status_id => 1), :class => params[:status_id].to_i == 1 ? "red" : "" , :remote  => true%>(<%= @purchases_pending %>)
+  <%= link_to "已发货账单", admin_purchases_path(:status_id => 3), :class => params[:status_id].to_i == 3 ? "red" : "" , :remote  => true%>(<%= @purchases_sent %>)
+  <%= link_to "交易成功账单", admin_purchases_path(:status_id => 4), :class => params[:status_id].to_i == 4 ? "red" : "" , :remote  => true%>(<%= @purchases_succeed %>)
+  <%= link_to "退货账单",admin_purchases_path(:status_id => 5), :class => params[:status_id].to_i == 5 ? "red" : "" , :remote  => true%>(<%= @purchases_return %>)
+  <%= link_to "退货成功账单", admin_purchases_path(:status_id => 6), :class => params[:status_id].to_i == 6 ? "red" : "" , :remote  => true%>(<%= @purchases_return_succeed %>)
+  <%= link_to "退货失败账单", admin_purchases_path(:status_id => 7), :class => params[:status_id].to_i == 7 ? "red" : "" , :remote  => true%>(<%= @purchases_return_fail %>)
+  <%= link_to "取消退货账单", admin_purchases_path(:status_id => 8), :class => params[:status_id].to_i == 8 ? "red" : "" , :remote  => true%>(<%= @purchases_cancel %>)
+</p>

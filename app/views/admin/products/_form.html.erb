@@ -1,0 +1,55 @@
+
+<iframe name ="iframe" style ="display:none;"></iframe>
+<tr>
+  <td>商品名</td>
+  <td><%= f.text_field 'name' %></td>
+</tr>
+<tr>
+  <td>编号</td>
+  <td><%= f.text_field 'num' %></td>
+</tr>
+<tr>
+  <td>数量</td>
+  <td><%= f.text_field 'count' %></td>
+</tr>
+<tr>
+  <td>分类</td>
+  <td>
+    <%= f.select("small_category_id",SmallCategory.all.collect {|bs| [bs.small_category_name, bs.id]})%>
+  </td>
+</tr>
+<tr id=tr1>
+  <td>进价</td>
+  <td><%= f.text_field 'cost' %></td>
+</tr>
+<tr id=tr2>
+  <td>出售价格</td>
+  <td><%= f.text_field 'price' %></td>
+</tr>
+<tr id=tr2>
+  <td>是否推荐</td>
+  <td>yes<%= f.radio_button("recommand","yes",{:checked => true}) %> no<%= f.radio_button("recommand", "no") %></td>
+</tr>
+<tr>
+  <td>图片上传</td>
+  <td>
+    <div id="image_preview" >
+      <%  if @picture.present? %>
+        <%= image_tag @picture.avatar.url(:thumb) %>
+      <% else %>
+        <%=  image_tag @product.product_pictrue.try(:avatar).try(:url,:thumb)%>
+      <% end %>
+
+    </div>
+    <div><%= f.file_field "product_pictrue", :onchange => "this.form.action = '#{preview_image_admin_product_pictrues_path}';this.form.target='iframe';this.form.submit();this.method = 'post';" %></div>
+  </td>
+</tr>
+<tr id=tr2>
+  <td>商品详细信息</td>
+  <td><%=h f.cktext_area "describe"%></td>
+</tr>
+
+
+
+
+

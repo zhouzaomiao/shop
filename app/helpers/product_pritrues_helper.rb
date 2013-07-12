@@ -1,0 +1,2 @@
+module ProductPritruesHelper
+end

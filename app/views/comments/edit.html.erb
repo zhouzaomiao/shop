@@ -1,0 +1,48 @@
+
+
+<b>商品评论编辑:</b>
+<table width="60%" border="1" cellpadding="0" cellspacing="0">
+  <tr class="listtitle">
+    <th scope="col">商品名称</th>
+    <th scope="col">单价</th>
+    <th scope="col">数量</th>
+  </tr>
+  <tr>
+    <td ><span><%= link_to "#{@shopping_cart_product.product.name}", :controller => :products, :action => "show", :id => @shopping_cart_product.product_id %></span></td>
+    <td><span >¥<%= @shopping_cart_product.purchase_price %></span></td>
+    <td><span ><%= @shopping_cart_product.quantity %></span></td>
+  </tr>
+</table>
+<% if @comments.present? %>
+  评论：<td><%= @comments.comment %></td><br/>
+  评分：<%= @comments.score %>
+<% end %>
+  
+
+
+<div id ="content_edit"class ="field" align="center">
+  <tr>
+    <td><%= flash[:message] %></td>
+    <td><%= render :partial => "/common/error_message", :locals => {:obj => @comment} %></td>
+  </tr>
+  <tr>
+    <%= form_for @comment do |f|%>
+      评论:
+      <%= hidden_field_tag('comment[product_id]', @shopping_cart_product.product_id) %>
+      <%= text_area_tag "comment[comment]","#{@comment.comment}",:size => "80x2"%><br/>
+  <%# = text_area_tag "comment[user_content]","#{}"  %>
+    评分：
+    1<input type="radio" id="post_category" name="score" value="1"
+            checked="checked" />
+    2<input type="radio" id="post_category" name="score" value="2" />
+    3<input type="radio" id="post_category" name="score" value="3" />
+    4<input type="radio" id="post_category" name="score" value="4" />
+    5<input type="radio" id="post_category" name="score" value="5" />
+    <br />
+    <%= f.submit %>
+  <% end %>
+</tr>
+</div>
+
+
+  

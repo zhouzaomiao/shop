@@ -1,0 +1,20 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '订单一览' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+<div id="model_errors" align="center">
+  <h4><%= flash[:message] %></h4>
+</div>
+<div>
+  <h3><td>订单一览：</td></h3>
+</div>
+<div class="m" id="allsort">
+  <br />
+  <%= render "list_catalog" %>
+</div>
+
+<div id="admin_purchase_list">
+  <%= render :partial => "list" %>
+</div>

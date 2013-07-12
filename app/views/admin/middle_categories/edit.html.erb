@@ -1,0 +1,27 @@
+<div>
+  <h2><%= link_to '首页', :controller => 'admin/products', :action => 'list' %>&nbsp;&gt;&nbsp;<%= link_to '大分类', :controller => 'admin/big_categories', :action => 'list' %>&nbsp;&gt;&nbsp;<%= '中分类编辑' %>
+  </h2>
+</div>
+<br/>
+<hr></hr>
+
+<%=  form_tag( admin_middle_category_path(@middle_category.id)  , :method => :put ,:align => :center) do -%>
+  <td><%= render :partial => "/common/error_message", :locals => {:obj => @middle_category} %></td>
+  <table>
+    <tr>
+      <td align="right"><%= label_tag "”编辑#{@middle_category.big_category.name}“大分类下中分类名：" %></td>
+      
+      <td><%= text_field_tag 'middle_category_name[name]',@middle_category.middle_category_name%> </td>
+    </tr>
+    <tr>
+      <td align="right">
+        <span class="STYLE2">
+          <%= link_to '取消', :controller => 'admin/middle_categories', :action => :list, :id => @big_category.id %>
+        </span>
+      </td>
+      <td align="right">
+        <%= submit_tag '更新' %>
+      </td>
+    </tr>
+  </table>
+<% end -%>

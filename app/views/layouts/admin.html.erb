@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Products: <%= controller.action_name %></title>
+    <%= javascript_include_tag "admin/application" %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'admin' %>
+    <%= stylesheet_link_tag 'base' %>
+    <%= stylesheet_link_tag 'home' %>
+    <%= stylesheet_link_tag 'read' %>
+    <script language=javascript>
+      function expand(el){
+        childObj = document.getElementById("child" + el);
+
+        if (childObj.style.display == 'none') {
+          childObj.style.display = 'block';
+        }
+        else {
+          childObj.style.display = 'none';
+        }
+        return;
+      }
+      function search(key)
+      {
+        jQuery.ajax('/products/search?content=' + obj.value,{
+          method: "get",
+          dataType: "html",
+          success: function(data){
+            $('#list').html(data);
+          }
+        })
+      }
+    </script>
+
+  </head>
+  <body>
+    <div id="shortcut">
+      <div class="w">
+        <ul>
+          <li class="fore1">您好，欢迎来到商城后台！<span></span> </li>
+        </ul>
+        <span class="clr"></span>
+      </div>
+    </div>
+    <div style="float: left">
+      <table height=450px cellSpacing=0 cellPadding=0 width=150 background="/assets/admins/menu_bg.jpg" border=0>
+        <tr>
+          <td vAlign=top align=middle>
+            <table cellSpacing=0 cellPadding=0 width="100%" border=0>
+              <tr>
+                <td height=10>
+
+                  管理员：admin&nbsp;<%= link_to "退出", logout_admin_admin_sessions_path %>
+
+                </td>
+              </tr>
+            </table>
+            <table cellSpacing=0 cellPadding=0 width=150 border=0>
+              <tr height=22>
+                <td style="PADDING-LEFT: 30px" background="/assets/admins/menu_bt.jpg">
+                  <a class=menuParent  href="/admin/users/list">用户管理</a>
+                </td>
+              </tr>
+              <tr height=4>
+                <td>
+                </td>
+              </tr>
+            </table>
+            <table cellSpacing=0 cellPadding=0 width=150 border=0>
+              <tr height=22>
+                <td style="PADDING-LEFT: 30px" background="/assets/admins/menu_bt.jpg">
+                  <a class=menuParent  href="/admin/products/list">商品管理</a>
+                </td>
+              </tr>
+              <tr height=4>
+                <td>
+                </td>
+              </tr>
+            </table>
+            
+            <table cellSpacing=0 cellPadding=0 width=150 border=0>
+              <tr height=22>
+                <td style="PADDING-LEFT: 30px" background="/assets/admins/menu_bt.jpg">
+                  
+                  <%= link_to "分类管理", :controller => :big_categories, :action => :list %>
+                </td>
+              </tr>
+              <tr height=4>
+                <td>
+                </td>
+              </tr>
+            </table>
+            <table id=child3 style="<%= category_staly %>" cellSpacing=0 cellPadding=0 width=150 border=0>
+              <tr height=20>
+                <td align=middle width=30>
+                  <img height=9 src="/assets/admins/menu_icon.gif" width=9></img>
+                </td>
+                <td>
+                  <%= link_to "大分类", :controller => 'admin/big_categories', :action => 'list' %>
+                </td>
+              </tr>
+              <tr height=20>
+                <td align=middle width=30>
+                  <img height=9 src="/assets/admins/menu_icon.gif" width=9></img>
+                </td>
+                <td>
+                  <%= link_to "中分类", :controller => 'admin/title_middle_categories', :action => 'index'%>
+                </td>
+              </tr>
+              <tr height=20>
+                <td align=middle width=30>
+                  <img height=9 src="/assets/admins/menu_icon.gif" width=9></img>
+                </td>
+                <td>
+                  <%= link_to "小分类", :controller => 'admin/title_small_categories', :action => 'index'%>
+                </td>
+              </tr>
+            </table>
+            <table cellSpacing=0 cellPadding=0 width=150 border=0>
+              <tr height=22>
+                <td style="PADDING-LEFT: 30px" background="/assets/admins/menu_bt.jpg">
+                  <%= link_to "订单管理",:controller => :purchases, :action => :index %>
+                </td>
+              </tr>
+              <tr height=4>
+                <td>
+                </td>
+              </tr>
+            </table>
+            <table id=child4 style="DISPLAY: none" cellSpacing=0 cellPadding=0 width=150 border=0>
+              <tr height=20>
+                <td align=middle width=30>
+                  <img height=9 src="/assets/admins/menu_icon.gif" width=9></img>
+                </td>
+                <td>
+                  <a href="purchase_list.html" target = 'main'>查看</a>
+                </td>
+              </tr>
+            </table>
+            <table cellSpacing=0 cellPadding=0 width=150 border=0>
+              <tr height=22>
+                <td style="PADDING-LEFT: 30px" background="/assets/admins/menu_bt.jpg">
+
+                  <%= link_to "营业额管理",price_collect_admin_purchases_path %>
+                </td>
+              </tr>
+              <tr height=4>
+                <td>
+                </td>
+              </tr>
+            </table>
+            <table id=child5 style="DISPLAY: none" cellSpacing=0 cellPadding=0 width=150 border=0>
+              <tr height=20>
+                <td align=middle width=30>
+                  <img height=9 src="/assets/admins/menu_icon.gif" width=9></img>
+                </td>
+                <td>
+                  <a href="turnover.html" target = 'main'>查看</a>
+                </td>
+              </tr>
+            </table>
+
+            <table id=child6 style="DISPLAY: none" cellSpacing=0 cellPadding=0 width=150 border=0>
+              <tr height=20>
+                <td align=middle width=30>
+                  <img height=9 src="/assets/admins/menu_icon.gif" width=9></img>
+                </td>
+                <td>
+                  <a href="comment_list.html" target = 'main'>查看</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width=1 bgColor=#d1e6f7>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+    <div id = "list_ajax">
+    <%= yield %>
+    </div>
+    <div class="w">
+      <div id="service">
+        <div class="clr"></div>
+      </div>
+    </div>
+
+    <div class="w" id="footer">
+      <div class="copyright">
+			智科&copy;2013-2015&nbsp;&nbsp;&nbsp;zzm版权所有
+      </div>
+    </div>
+
+  </body>
+</html>
